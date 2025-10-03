@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800&amp;family=Lora:wght@700&amp;family=Poppins:wght@300" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Voyage - Your Journey Starts Here</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --brand-mountain-blue: #3B5998;
+            --brand-light-orange: #FFC15E;
+            --brand-white: #FFFFFF;
+            --text-dark: #222222;
+            --text-soft: #555555;
+            --bg-soft-white: #fcfaf8;
+        }
+        details > summary {
+            list-style: none;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        .animate-fade-up {
+            animation: fade-up 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        .animate-fade-up-delay-1 {
+            animation-delay: 0.3s;
+        }
+        .animate-fade-up-delay-2 {
+            animation-delay: 0.6s;
+        }
+        .animate-fade-up-delay-3 {
+            animation-delay: 0.9s;
+        }
+        @keyframes fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .scroll-indicator {
+            animation: pulse 2s infinite, fade-in 1.5s ease-out forwards;
+            opacity: 0;
+            animation-delay: 1.2s, 1.2s;
+        }
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(10px);
+                opacity: 1;
+            }
+        }
+        @keyframes fade-in {
+            to {
+                opacity: 0.8;
+            }
+        }
+        .carousel {
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+        }
+        .carousel-item {
+            scroll-snap-align: start;
+        }
+        .search-container {
+            position: relative;
+        }
+        .search-input {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .search-container:focus-within .search-input {
+            width: 250px;
+            opacity: 1;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+        }
+        .search-icon {
+            right: 0.5rem;
+        }
+        .search-container:focus-within .search-icon {
+            color: var(--brand-light-orange);
+        }
+        .destination-carousel {
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;}
+        .destination-carousel::-webkit-scrollbar {
+            display: none;}
+        .destination-card {
+            scroll-snap-align: start;
+            flex: 0 0 90%;
+        }
+        @media (min-width: 640px) {
+            .destination-card {
+                flex: 0 0 45%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .destination-card {
+                flex: 0 0 30%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[var(--brand-white)] text-[var(--text-dark)]" style='font-family: "Plus Jakarta Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<header class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 80 backdrop-blur-sm">
+<div class="container mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 md:px-12">
+<a class="flex items-center gap-3 text-2xl font-bold text-white" href="#">
+<svg class="size-8 text-[var(--brand-light-orange)]" fill="none" viewBox="0 0 48 48" src="Assets/Photos/new.png">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<span class="hidden sm:inline">Active Motion Kenya</span>
+</a>
+<nav class="hidden items-center gap-6 lg:flex">
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="tours.html">Home</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="packages.html">Packages</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="about.html">About Us</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Contact</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="private.html">Private Adventures</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="search-container group relative hidden items-center lg:flex">
+<input class="search-input h-10 rounded-full border-none bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search destinations..." type="search"/>
+<svg class="search-icon pointer-events-none absolute h-5 w-5 text-white transition-colors group-focus-within:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<a href="login.html" class="hidden md:inline-flex h-10 items-center justify-center rounded-full px-6 text-sm font-medium text-white transition-colors hover:bg-white/20 cursor-pointer"> Log In </a>
+<a href="signup.html" class="hidden md:inline-flex h-10 items-center justify-center rounded-full border border-white bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[var(--text-dark)] cursor-pointer"> Sign Up </a>
+<button class="lg:hidden">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-grow">
+<section class="relative h-screen min-h-[700px] w-full overflow-hidden">
+<div class="absolute inset-0 z-0 h-full w-full">
+<div class="carousel flex h-full w-full overflow-x-auto">
+<div class="carousel-item relative h-full w-full flex-shrink-0">
+<img alt="Tropical beach with turquoise water and palm trees" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBi05DXpkNtHQTkQe7_Ij8aavgDEdfHpMJtpsWV-IeyUCVqXu05egFrpUM2PQdbsYq77ZlKx1ezufaZ2KM2jWNtwkXA9_VoqI0K0Evme-cuyPNJrN3hpuypTNY-UCHGTlEF1oSAIlEsJXcDXk7CpeWROqI4FgR4RM-GFTx6vMSdZzl3_iTtpdWAoYeVR7-r-kczdHBf3Ku03clTZ-FujJ7KqLH--8ol7pccqRMP_5b_bmbdizcIcg7I_qRH-cPK1fpiFH7fxljRV__"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
+</div>
+<div class="carousel-item relative h-full w-full flex-shrink-0">
+<img alt="Majestic mountain range at sunrise" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcdzmYk0PA43aqzGrcA3LXpGSR-x4aXlZx6F7J8N12JOe2mIOMbf-CmL8dYe5o6o7yyWw_0hamTBKIK5p3c7ajkTqf4C51w6hksBKmwDVJ1IiX4AW9c-HDpY4oxd1W5F251O4ljzFjPKElCi6G8OqYkcPLAirGGl46jKOlcR-KtEYoq-CBXextcUXJr0pcVeHcrUL6DMVAfmFEgNVFRQ8Fd9loOA5MvRps1A8oczjY6E_m9Zw88snJXPQjMb1U7GMG5-R3iV2oC6aa"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
+</div>
+<div class="carousel-item relative h-full w-full flex-shrink-0">
+<img alt="Bustling city street at night with neon lights" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27CpVVIyb2s_WtGWMb9IyKI7rSqgO1_JfIGohBDQDTa6Xt27S7lXG03ojIV5hCW1GloXqeKjs_t1A8kAp5Z8qRdbY7ldumXSlNeVIsZZvwM1yUI-Pk4LeDDEhNPd382nuXRckXHctD8nK6Hss5mIPGdcsPVKor00H2PrwhgLtlSweAa1_HgorJZdjETXnuGSRmrPmL-xqad4v1v4KeXEmrzZVFI0jFG127qU2VXVgjRZ_2XO00MIK6x0xnbmvp51z_gxVSAkKWqDc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-transparent"></div>
+</div>
+</div>
+</div>
+<div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white md:px-12">
+<div class="max-w-4xl">
+<h1 class="font-serif text-6xl font-bold text-white/95 animate-fade-up md:text-7xl" style="font-family: 'Lora', serif;">Your Journey Starts Here</h1>
+<p class="mt-6 text-xl font-light tracking-widest text-white/90 animate-fade-up animate-fade-up-delay-1 md:text-2xl" style="font-family: 'Poppins', sans-serif;">Discover new horizons with curated travel experiences</p>
+<div class="mt-12 flex flex-col items-center gap-6 sm:flex-row sm:justify-center animate-fade-up animate-fade-up-delay-2">
+<button class="w-full sm:w-auto rounded-xl bg-[var(--brand-light-orange)] px-12 sm:px-16 py-5 sm:py-6 text-lg font-bold text-[var(--text-dark)] shadow-lg transition-transform duration-300 hover:scale-105"> Find Your Adventure </button>
+<a class="text-white/80 transition-colors hover:text-white" href="packages.html">View Destinations</a>
+</div>
+</div>
+<div class="absolute bottom-8 left-1/2 -translate-x-1/2 scroll-indicator">
+<div class="flex h-10 w-6 items-center justify-center rounded-full border-2 border-white/80">
+<svg class="h-4 w-4 animate-bounce text-white/80" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M19 14l-7 7m0 0l-7-7m7 7V3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-gray-50 py-24 md:py-32">
+<div class="container mx-auto max-w-[1440px] px-6 md:px-12">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold md:text-5xl">Discover New Destinations</h2>
+<p class="mx-auto mt-4 max-w-3xl text-lg text-[var(--text-soft)]">Let us inspire your next adventure with these handpicked locations.</p>
+</div>
+<div class="destination-carousel flex overflow-x-auto gap-8 pb-8">
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Bora Bora Overwater Bungalows" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="Assets/Photos/cliff.webp"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Top Rated</span>
+<span class="rounded-full bg-[var(--brand-mountain-blue)] px-3 py-1 text-xs font-semibold text-white">Exclusive Offer</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Bora Bora, French Polynesia</h3>
+<p class="mt-2 text-[var(--text-soft)]">Escape to paradise with luxurious overwater bungalows and crystal-clear lagoons.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">7 Days</span> Trip</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $4,500</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Amalfi Coast, Italy" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="Assets/Photos/active3.webp"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-[var(--brand-light-orange)] px-3 py-1 text-xs font-semibold text-white">New</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Amalfi Coast, Italy</h3>
+<p class="mt-2 text-[var(--text-soft)]">Discover cliffside villages, stunning coastline, and exquisite Italian cuisine.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">10 Days</span> Trip</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $3,200</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Serengeti National Park, Tanzania" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="Assets/Photos/ebs-19.webp"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Top Rated</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Serengeti, Tanzania</h3>
+<p class="mt-2 text-[var(--text-soft)]">Witness the Great Migration and experience an unforgettable African safari.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">5 Days</span> Safari</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $2,800</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Iceland's Northern Lights" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="Assets/Photos/gvb-31.webp"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-[var(--brand-light-orange)] px-3 py-1 text-xs font-semibold text-white">Seasonal</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Iceland's Northern Lights</h3>
+<p class="mt-2 text-[var(--text-soft)]">Chase the aurora borealis and explore glaciers, volcanoes, and hot springs.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">6 Days</span> Tour</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $3,500</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-white py-24 md:py-32">
+<div class="container mx-auto max-w-[1440px] px-6 md:px-12">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold md:text-5xl">Popular Destinations</h2>
+<p class="mx-auto mt-4 max-w-3xl text-lg text-[var(--text-soft)]">Join fellow travelers in exploring these top-trending locations.</p>
+</div>
+<div class="destination-carousel flex overflow-x-auto gap-8 pb-8">
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Santorini, Greece" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="Assets/Photos/active6.jpg"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Most Visited</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Santorini, Greece</h3>
+<p class="mt-2 text-[var(--text-soft)]">Iconic whitewashed villages and stunning sunsets over the Aegean Sea.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">5 Days</span> Getaway</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $1,800</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Kyoto, Japan" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27CpVVIyb2s_WtGWMb9IyKI7rSqgO1_JfIGohBDQDTa6Xt27S7lXG03ojIV5hCW1GloXqeKjs_t1A8kAp5Z8qRdbY7ldumXSlNeVIsZZvwM1yUI-Pk4LeDDEhNPd382nuXRckXHctD8nK6Hss5mIPGdcsPVKor00H2PrwhgLtlSweAa1_HgorJZdjETXnuGSRmrPmL-xqad4v1v4KeXEmrzZVFI0jFG127qU2VXVgjRZ_2XO00MIK6x0xnbmvp51z_gxVSAkKWqDc"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Top Rated</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Kyoto, Japan</h3>
+<p class="mt-2 text-[var(--text-soft)]">Ancient temples, serene gardens, and rich cultural traditions await.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">8 Days</span> Cultural Tour</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $3,000</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Machu Picchu, Peru" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxz8sSWYMrUlTKwSqNSPCySYBteRWeo9Ofb1d94TlepsODlW4dl472fQhdlSoDiiTgsVIXQC1JZy-WpMmcXxR-RCnyJVBBWTqu-DSud_Vj5KicAl-5dxyZGmM2MSCeqaTUtC2YUkWhd1amxnsju86ujooJMdAb0v2jhlFT78DXMId14uZNrARdiAKt79a15qmzlAQuvELzTRjCeK5wqk21cPWo-bnAft4acMGDYxKm0UxcIqh1lIWH_VBZTqUWNFIxyFDV3zUvk8N3"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-[var(--brand-mountain-blue)] px-3 py-1 text-xs font-semibold text-white">Adventure Pick</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Machu Picchu, Peru</h3>
+<p class="mt-2 text-[var(--text-soft)]">Hike the Inca Trail to the legendary lost city of the Incas in the Andes.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">4 Days</span> Inca Trail</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $1,500</span>
+</div>
+</div>
+</a>
+<a class="destination-card group block w-full overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Banff, Canada" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcdzmYk0PA43aqzGrcA3LXpGSR-x4aXlZx6F7J8N12JOe2mIOMbf-CmL8dYe5o6o7yyWw_0hamTBKIK5p3c7ajkTqf4C51w6hksBKmwDVJ1IiX4AW9c-HDpY4oxd1W5F251O4ljzFjPKElCi6G8OqYkcPLAirGGl46jKOlcR-KtEYoq-CBXextcUXJr0pcVeHcrUL6DMVAfmFEgNVFRQ8Fd9loOA5MvRps1A8oczjY6E_m9Zw88snJXPQjMb1U7GMG5-R3iV2oC6aa"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Most Visited</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Banff, Canada</h3>
+<p class="mt-2 text-[var(--text-soft)]">Breathtaking mountain landscapes, turquoise lakes, and abundant wildlife.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">7 Days</span> Exploration</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $2,200</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-gray-50 py-24 md:py-32">
+<div class="container mx-auto max-w-[1440px] px-6 md:px-12">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold md:text-5xl">Our Packages</h2>
+<p class="mx-auto mt-4 max-w-3xl text-lg text-[var(--text-soft)]">Choose from our curated packages for an unforgettable experience.</p>
+</div>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<a class="group block overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Luxury Beach Resort" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9e8f7g6h5i4j3k2l1m0n9o8p7q6r5s4t3u2v1w0x9y8z7a6b5c4d3e2f1g0h9i8j7k6l5m4n3o2p1q0r9s8t7u6v5w4x3y2z1a0b9c8d7e6f5g4h3i2j1k0l9m8n7o6p5q4r3s2t1u0v9w8x7y6z5a4b3c2d1e0f9g8h7i6j5k4l3m2n1o0p9q8r7s6t5u4v3w2x1y0z"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-[var(--brand-light-orange)] px-3 py-1 text-xs font-semibold text-white">Luxury</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Luxury Beach Escape</h3>
+<p class="mt-2 text-[var(--text-soft)]">Indulge in 5-star resorts, private beaches, and gourmet dining.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">7 Days</span> / 6 Nights</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $5,000</span>
+</div>
+</div>
+</a>
+<a class="group block overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Family Adventure in the Mountains" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcdzmYk0PA43aqzGrcA3LXpGSR-x4aXlZx6F7J8N12JOe2mIOMbf-CmL8dYe5o6o7yyWw_0hamTBKIK5p3c7ajkTqf4C51w6hksBKmwDVJ1IiX4AW9c-HDpY4oxd1W5F251O4ljzFjPKElCi6G8OqYkcPLAirGGl46jKOlcR-KtEYoq-CBXextcUXJr0pcVeHcrUL6DMVAfmFEgNVFRQ8Fd9loOA5MvRps1A8oczjY6E_m9Zw88snJXPQjMb1U7GMG5-R3iV2oC6aa"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-green-500 px-3 py-1 text-xs font-semibold text-white">Family Fun</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Mountain Family Adventure</h3>
+<p class="mt-2 text-[var(--text-soft)]">Activities for all ages, from hiking and biking to wildlife spotting.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">8 Days</span> / 7 Nights</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $3,500</span>
+</div>
+</div>
+</a>
+<a class="group block overflow-hidden rounded-2xl bg-white shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl" href="#">
+<div class="relative h-64 w-full">
+<img alt="Romantic Honeymoon in Paris" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB27CpVVIyb2s_WtGWMb9IyKI7rSqgO1_JfIGohBDQDTa6Xt27S7lXG03ojIV5hCW1GloXqeKjs_t1A8kAp5Z8qRdbY7ldumXSlNeVIsZZvwM1yUI-Pk4LeDDEhNPd382nuXRckXHctD8nK6Hss5mIPGdcsPVKor00H2PrwhgLtlSweAa1_HgorJZdjETXnuGSRmrPmL-xqad4v1v4KeXEmrzZVFI0jFG127qU2VXVgjRZ_2XO00MIK6x0xnbmvp51z_gxVSAkKWqDc"/>
+<div class="absolute top-4 left-4 flex gap-2">
+<span class="rounded-full bg-[var(--brand-mountain-blue)] px-3 py-1 text-xs font-semibold text-white">Honeymoon</span>
+</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold">Romantic Paris Honeymoon</h3>
+<p class="mt-2 text-[var(--text-soft)]">Experience the city of love with romantic dinners and private tours.</p>
+<div class="mt-4 border-t border-gray-200 pt-4 flex justify-between items-center text-sm text-gray-600">
+<span><span class="font-semibold">6 Days</span> / 5 Nights</span>
+<span class="font-bold text-lg text-[var(--brand-mountain-blue)]">from $4,200</span>
+</div>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="bg-white py-24 md:py-32">
+<div class="container mx-auto max-w-4xl px-6 md:px-12">
+<div class="text-center">
+<h2 class="text-4xl font-bold md:text-5xl">Frequently Asked Questions</h2>
+<p class="mx-auto mt-4 max-w-3xl text-lg text-[var(--text-soft)]"> Have questions? We've got answers. Here are some of our most common inquiries. </p>
+</div>
+<div class="mt-16 space-y-6">
+<details class="group rounded-xl bg-gray-50 p-6 shadow-lg">
+<summary class="flex cursor-pointer items-center justify-between text-lg font-bold text-[var(--text-dark)]">
+<span>What types of travel packages do you offer?</span>
+<svg class="h-6 w-6 transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</summary>
+<p class="mt-4 text-[var(--text-soft)]"> We offer a wide range of packages including luxury getaways, adventure tours, family vacations, honeymoon packages, and customized itineraries tailored to your specific interests and budget. </p>
+</details>
+<details class="group rounded-xl bg-gray-50 p-6 shadow-lg">
+<summary class="flex cursor-pointer items-center justify-between text-lg font-bold text-[var(--text-dark)]">
+<span>Can I customize my trip?</span>
+<svg class="h-6 w-6 transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</summary>
+<p class="mt-4 text-[var(--text-soft)]"> Absolutely! We specialize in creating personalized travel experiences. You can work with our travel experts to customize any aspect of your trip, from accommodation and activities to the duration of your stay. </p>
+</details>
+<details class="group rounded-xl bg-gray-50 p-6 shadow-lg">
+<summary class="flex cursor-pointer items-center justify-between text-lg font-bold text-[var(--text-dark)]">
+<span>What is included in the package price?</span>
+<svg class="h-6 w-6 transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</summary>
+<p class="mt-4 text-[var(--text-soft)]"> Inclusions vary depending on the package, but typically our prices cover accommodation, specified meals, guided tours, and transportation as detailed in the itinerary. Flights are often optional and can be added upon request. Please check the specific package details for a complete list of inclusions. </p>
+</details>
+<details class="group rounded-xl bg-gray-50 p-6 shadow-lg">
+<summary class="flex cursor-pointer items-center justify-between text-lg font-bold text-[var(--text-dark)]">
+<span>How do I book a trip?</span>
+<svg class="h-6 w-6 transform transition-transform duration-300 group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</summary>
+<p class="mt-4 text-[var(--text-soft)]"> You can book a trip directly through our website by selecting your desired package and following the checkout process. Alternatively, you can contact our customer service team via phone or email, and they will be happy to assist you with your booking. </p>
+</details>
+</div>
+</div>
+</section>
+<section class="bg-cover bg-center py-24 md:py-32" style=" background-image: linear-gradient( rgba(59, 89, 152, 0.9), rgba(59, 89, 152, 0.9) ), url('https://lh3.googleusercontent.com/aida-public/AB6AXuDBi05DXpkNtHQTkQe7_Ij8aavgDEdfHpMJtpsWV-IeyUCVqXu05egFrpUM2PQdbsYq77ZlKx1ezufaZ2KM2jWNtwkXA9_VoqI0K0Evme-cuyPNJrN3hpuypTNY-UCHGTlEF1oSAIlEsJXcDXk7CpeWROqI4FgR4RM-GFTx6vMSdZzl3_iTtpdWAoYeVR7-r-kczdHBf3Ku03clTZ-FujJ7KqLH--8ol7pccqRMP_5b_bmbdizcIcg7I_qRH-cPK1fpiFH7fxljRV__'); ">
+<div class="container mx-auto max-w-4xl px-6 text-center text-white md:px-12">
+<h2 class="text-4xl font-bold md:text-5xl"> Ready for Your Next Journey? </h2>
+<p class="mx-auto mt-4 max-w-3xl text-lg"> Let's start planning your dream vacation today. Get in touch with our experts or subscribe to get exclusive deals straight to your inbox. </p>
+<div class="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
+<input class="form-input h-14 w-full max-w-sm rounded-full border-none bg-white/20 px-6 text-white placeholder-white/70 focus:ring-2 focus:ring-[var(--brand-light-orange)]" placeholder="Enter your email" type="email"/>
+<button class="h-14 w-full flex-shrink-0 rounded-full bg-[var(--brand-light-orange)] px-8 text-base font-bold uppercase tracking-wider text-black transition-transform duration-300 hover:scale-105 sm:w-auto"> Subscribe </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-white">
+<div class="container mx-auto max-w-[1440px] px-6 py-16 md:px-12">
+<div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
+<div>
+<h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Terms &amp; Settings</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Privacy Policy</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Terms of Service</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Cookie Settings</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Accessibility</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Contacts &amp; Locations</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Contact Us</a></li>
+<li class="text-gray-400">Our Offices:</li>
+<ul class="mt-2 space-y-2 pl-4">
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Nairobi</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Arusha</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Cape Town</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Maun</a></li>
+</ul>
+<li><a class="mt-2 inline-block text-gray-400 transition-colors hover:text-white" href="#">Careers</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Support</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">FAQs</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Help Center</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Booking Assistance</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Travel Insurance</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold uppercase tracking-wider text-gray-300">Discover</h3>
+<ul class="mt-4 space-y-3">
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Destination Guides</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Safari Planning Tips</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">Travel Blogs</a></li>
+<li><a class="text-gray-400 transition-colors hover:text-white" href="#">About Our Experts</a></li>
+</ul>
+</div>
+</div>
+<div class="mt-16 border-t border-gray-700 pt-8 flex flex-col items-center justify-between sm:flex-row">
+<a class="flex items-center gap-3 text-2xl font-bold text-white" href="#">
+<svg class="size-8 text-[var(--brand-light-orange)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<span>Voyage</span>
+</a>
+<p class="mt-4 text-sm text-gray-400 sm:mt-0">© 2025 Active Motion Kenya. All rights reserved.</p>
+<div class="mt-4 flex space-x-6 sm:mt-0">
+<a class="text-gray-400 transition-colors hover:text-white" href="https://web.facebook.com/search/top?q=active%20motion%20kenya">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 transition-colors hover:text-white" href="https://www.instagram.com/active_motion_tours/">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.011 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 012.792 2.792c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-2.792 2.792c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.011-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-2.792-2.792c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 012.792-2.792c.636-.247 1.363.416 2.427.465C9.53 2.01 9.884 2 12.315 2zM12 7a5 5 0 100 10 5 5 0 000-10zm0-2a7 7 0 110 14 7 7 0 010-14zm6.406-2.344a1.25 1.25 0 100-2.5 1.25 1.25 0 000 2.5z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-gray-400 transition-colors hover:text-white" href="https://x.com/Active_motion_">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+
+</body></html>

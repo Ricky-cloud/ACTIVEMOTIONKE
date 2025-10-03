@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700&amp;display=swap" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Summit Safaris</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+    :root {
+      --nav-bg-color: rgba(255, 255, 255, 0.8);
+      --gradient-start: #0F172A;
+      --primary-blue: #3366CC;
+      --text-primary: #1A202C;
+      --text-secondary: #4A5568;
+      --text-light: #A0AEC0;
+    }
+    .fade-in-delayed {
+      animation: fadeIn 1s ease-in-out 0.5s forwards;
+      opacity: 0;
+    }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    h1,
+    h2,
+    h3,
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+    .nav-link {
+      position: relative;
+      transition: color 0.3s ease;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: var(--primary-blue);
+      transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .nav-link:hover::after {
+      width: 100%;
+    }
+     .search-container {
+            position: relative;
+        }
+        .search-input {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .search-container:focus-within .search-input {
+            width: 250px;
+            opacity: 1;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+        }
+        .search-icon {
+            right: 0.5rem;
+        }
+        .search-container:focus-within .search-icon {
+            color: var(--brand-orange-yellow);
+        }
+        .testimonial-carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 1rem;
+  padding: 1rem 0;
+  -webkit-overflow-scrolling: touch; /* For smooth scrolling on iOS */
+}
+
+.testimonial-card {
+  flex: 0 0 80%;
+  scroll-snap-align: start;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+@media (min-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 calc(33.333% - 1rem);
+  }
+}
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+<div class="relative min-h-screen overflow-x-hidden">
+<header class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 80 backdrop-blur-sm">
+<div class="container mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 md:px-12">
+<a class="flex items-center gap-3 text-2xl font-bold text-white" href="#">
+<svg class="size-8 text-[var(--brand-orange-yellow)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<span class="hidden sm:inline">Active Motion Kenya</span>
+</a>
+<nav class="hidden items-center gap-6 lg:flex">
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="tours.html">Home</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="packages.html">Packages</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="about.html">About Us</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Contact</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="private.html">Private Adventures</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="search-container group relative hidden items-center lg:flex">
+<input class="search-input h-10 rounded-full border-none bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search destinations..." type="search"/>
+<svg class="search-icon pointer-events-none absolute h-5 w-5 text-white transition-colors group-focus-within:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full px-6 text-sm font-medium text-white transition-colors hover:bg-white/20"> Log In </button>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full border border-white bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[var(--text-dark)]"> Sign Up </button>
+<button class="lg:hidden">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main>
+<section class="relative h-[720px] w-full">
+<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("Assets/Photos/mtk3-41.jpg");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-[var(--gradient-start)]/60 to-transparent"></div>
+<div class="relative z-10 flex h-full flex-col items-center justify-center text-center text-white px-4">
+<div class="fade-in-delayed mb-4 flex items-center gap-3 rounded-full bg-white/10 backdrop-blur-sm py-2 px-5 border border-white/20">
+<svg class="text-white/80" fill="currentColor" height="20" viewBox="0 0 256 256" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M239.81,189.44l-32-80A16,16,0,0,0,192.49,104H152V48a16,16,0,0,0-16-16H120a16,16,0,0,0-16,16V80H48a16,16,0,0,0-16,16v40a16,16,0,0,0,16,16h4.15l-9.82,24.55A16,16,0,0,0,56.51,200H88a16,16,0,0,0,15.81-13.44l7.63-38.15h59l7.63,38.15A16,16,0,0,0,192.19,200h31.32a16,16,0,0,0,16.12-18.56l-9.82-24.55H236a16,16,0,0,0,14.71-22.19ZM230,141.24,228,144H184l-4.27-21.36a16,16,0,0,0-15.81-10.64H92.11a16,16,0,0,0-15.81,10.64L72,144H28V120h44a16,16,0,0,0,0-32H28V72H72v16a16,16,0,0,0,32,0V48h16v48a16,16,0,0,0,32,0V72h16V88a16,16,0,0,0,32,0V72h2.49l24,60Z"></path>
+</svg>
+<span class="text-sm font-semibold tracking-wider uppercase">Kilimanjaro Adventure</span>
+</div>
+<h1 class="text-6xl font-display font-bold text-white [text-shadow:0_5px_15px_rgba(0,0,0,0.4)] fade-in-delayed" style="animation-delay: 0.2s;">Kilimanjaro</h1>
+<p class="fade-in-delayed mt-5 text-xl font-light text-gray-200/90 max-w-2xl" style="animation-delay: 0.4s;">Experience the majestic highlands from a breathtaking ground view, an adventure etched in memory forever.</p>
+</div>
+</section>
+<div class="mx-auto -mt-24 w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="bg-white rounded-3xl shadow-2xl shadow-slate-900/10">
+<div class="grid grid-cols-12 gap-x-8 gap-y-12 p-8 sm:p-12 lg:p-16">
+<div class="col-span-12 lg:col-span-8">
+<div class="relative group">
+<div class="overflow-hidden rounded-xl border border-gray-200/80">
+<img alt="Himalayan Landscape" class="h-auto w-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" src="Assets/Photos/mtk3-41.jpg"/>
+</div>
+<button class="absolute top-1/2 left-4 -translate-y-1/2 rounded-full bg-white/70 p-3 text-gray-900 shadow-lg transition hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100 duration-300">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+<button class="absolute top-1/2 right-4 -translate-y-1/2 rounded-full bg-white/70 p-3 text-gray-900 shadow-lg transition hover:bg-white hover:scale-110 opacity-0 group-hover:opacity-100 duration-300">
+<svg fill="none" height="24" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+<section class="mt-12">
+<h2 class="text-3xl font-bold font-display text-[var(--text-primary)]">Walk the gentlest path to the Roof of Africa</h2>
+<p class="mt-4 text-lg text-[var(--text-secondary)] leading-relaxed">Join us for an unforgettable 6-day adventure up Mount Kilimanjaro via the scenic 
+  Marangu Route—the only route with cozy mountain huts and a gentler pace. 
+  You'll hike through rainforest, moorland, and a moon-like alpine desert
+   before summiting Africa’s highest peak</p>
+</section>
+<section class="mt-12">
+<h2 class="text-3xl font-bold font-display text-[var(--text-primary)]">Day Itinerary</h2>
+<div class="mt-8 space-y-12">
+<div>
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-xl font-bold text-blue-600">1</div>
+<h3 class="text-2xl font-bold font-display text-[var(--text-primary)]">Day 1: Arrival</h3>
+</div>
+<div class="mt-4 ml-16 border-l-2 border-blue-200 pl-6 pb-2">
+<p class="text-lg text-[var(--text-secondary)]">Arrive in Lukla (2,860m) and trek to Phakding (2,610m). This gentle start 
+  allows for acclimatization while offering stunning views of the Dudh Koshi River.</p>
+<ul class="mt-4 space-y-2 text-gray-600">
+<li class="flex items-center gap-3">
+<svg class="text-green-500" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 6 9 17l-5-5"></path>
+</svg>
+<span>Scenic flight to Lukla</span>
+</li>
+<li class="flex items-center gap-3">
+<svg class="text-green-500" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 6 9 17l-5-5"></path>
+</svg>
+<span>Trek through Sherpa villages</span>
+</li>
+<li class="flex items-center gap-3">
+<svg class="text-green-500" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+<path d="M20 6 9 17l-5-5"></path>
+</svg>
+<span>Overnight stay in a cozy teahouse</span>
+</li>
+</ul>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</section>
+<section class="mt-12">
+<h2 class="text-3xl font-bold font-display text-[var(--text-primary)]">Trail Information</h2>
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-8">
+<div class="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-6">
+<div class="relative h-24 w-24">
+<svg class="h-full w-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#e6e6e6" stroke-width="3"></path>
+<path d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831" fill="none" stroke="#4c51bf" stroke-dasharray="40, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center text-xl font-bold text-gray-800">15°</div>
+</div>
+<p class="mt-3 font-semibold text-gray-700">Average Slope</p>
+</div>
+<div class="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-6">
+<div class="relative h-24 w-24">
+<svg class="h-full w-full transform -rotate-90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+<line stroke="#e6e6e6" stroke-width="4" x1="10" x2="90" y1="90" y2="90"></line>
+<polyline fill="none" points="10 90, 30 60, 50 75, 70 40, 90 50" stroke="#4c51bf" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"></polyline>
+</svg>
+</div>
+<p class="mt-3 font-semibold text-gray-700">Distance</p>
+<p class="text-gray-500">27 Km/18 Miles</p>
+</div>
+<div class="flex flex-col items-center justify-center rounded-xl border border-gray-200 bg-gray-50 p-6">
+<div class="flex h-24 w-24 items-end justify-center gap-1">
+<div class="h-1/3 w-4 rounded-t-sm bg-yellow-400"></div>
+<div class="h-2/3 w-4 rounded-t-sm bg-orange-400"></div>
+<div class="h-full w-4 rounded-t-sm bg-red-500"></div>
+<div class="h-2/5 w-4 rounded-t-sm bg-orange-400"></div>
+</div>
+<p class="mt-3 font-semibold text-gray-700">Toughness</p>
+<p class="text-gray-500">Moderate</p>
+</div>
+</div>
+</section>
+</div>
+
+
+<div class="sticky top-[100px] col-span-12 lg:col-span-4 self-start">
+  <div class="rounded-2xl border border-gray-200/80 bg-gray-50 p-6 shadow-lg">
+    <div class="flex items-baseline justify-between">
+      <span id="basePrice" class="text-4xl font-bold text-gray-900">KES 220,000</span>
+      <span class="text-gray-500">/ person</span>
+    </div>
+    
+    <!-- Improved Bike Package Toggle -->
+
+    
+    <!-- Dynamic Price Display -->
+    <div class="mt-4 pt-4 border-t border-gray-200">
+      <div class="space-y-2">
+        <div class="flex justify-between items-center">
+          <span class="text-sm sm:text-base text-[var(--soft-gray)]">Base Price</span>
+          <span id="displayBasePrice" class="text-sm sm:text-base text-[var(--charcoal-gray)] font-medium">KES 220,000</span>
+        </div>
+
+      </div>
+      <div class="flex justify-between items-center mt-4 pt-4 border-t border-gray-300">
+        <span class="text-lg sm:text-xl font-bold text-[var(--charcoal-gray)]">Grand Total</span>
+        <span id="grandTotal" class="text-lg sm:text-xl font-bold text-blue-600">KES 220,000</span>
+      </div>
+    </div>
+    
+    <p class="mt-2 text-xs sm:text-sm text-gray-500">Includes all permits, fees, and refreshments.</p>
+    <button class="mt-6 w-full rounded-xl bg-gradient-to-r from-[#3366CC] to-[#254c99] py-3 sm:py-4 text-base sm:text-lg font-bold text-white shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-0.5">
+      <span class="relative z-10">Book Your Tour</span>
+    </button>
+    <p class="mt-4 text-center text-xs sm:text-sm text-gray-500">Questions? <a class="font-semibold text-[var(--primary-blue)] hover:underline" href="#">Contact Us</a></p>
+  </div>
+</div>
+
+
+
+
+<script>
+  function scrollTestimonials(offset) {
+    const carousel = document.getElementById('testimonial-carousel');
+    carousel.scrollBy({ left: offset, behavior: 'smooth' });
+  }
+</script>
+
+<!-- Add this CSS to your style section -->
+<style>
+  .testimonial-container {
+    position: relative;
+  }
+  
+  /* Mobile carousel behavior */
+  @media (max-width: 767px) {
+    .testimonial-container {
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 20px;
+    }
+    
+    .testimonial-container > div {
+      display: flex;
+      flex-wrap: nowrap;
+    }
+    
+    .testimonial-container > div > div {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+      margin-right: 1rem;
+    }
+    
+    /* Hide scrollbar */
+    .testimonial-container::-webkit-scrollbar {
+      display: none;
+    }
+  }
+</style>
+
+<!-- Add this JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.querySelector('.testimonial-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    if (container && prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+      });
+      
+      nextBtn.addEventListener('click', () => {
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+
+</div>
+</div>
+</main>
+<footer class="mt-24 bg-[#0F172A] text-gray-300 pt-16 pb-8">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12">
+<div class="col-span-2 md:col-span-4 lg:col-span-1">
+<h3 class="text-xl font-bold font-display text-white">Summit Safaris</h3>
+<p class="mt-4 text-sm text-gray-400">Premium travel and safari experiences in the world's most breathtaking locations.</p>
+</div>
+<div>
+<h3 class="font-semibold text-white tracking-wider uppercase text-sm">Destinations</h3>
+<nav class="mt-4 flex flex-col gap-3">
+<a class="text-gray-400 hover:text-white transition" href="#">Nepal</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Tanzania</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Peru</a>
+<a class="text-gray-400 hover:text-white transition" href="#">New Zealand</a>
+</nav>
+</div>
+<div>
+<h3 class="font-semibold text-white tracking-wider uppercase text-sm">Company</h3>
+<nav class="mt-4 flex flex-col gap-3">
+<a class="text-gray-400 hover:text-white transition" href="#">About Us</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Our Team</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Careers</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Contact</a>
+</nav>
+</div>
+<div>
+<h3 class="font-semibold text-white tracking-wider uppercase text-sm">Legal</h3>
+<nav class="mt-4 flex flex-col gap-3">
+<a class="text-gray-400 hover:text-white transition" href="#">Privacy Policy</a>
+<a class="text-gray-400 hover:text-white transition" href="#">Terms of Service</a>
+</nav>
+</div>
+<div>
+<h3 class="font-semibold text-white tracking-wider uppercase text-sm">Follow Us</h3>
+<div class="mt-4 flex gap-4">
+<a class="text-gray-400 hover:text-white transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.013-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218 1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 013.45 2.525c.636-.247 1.363-.416 2.427-.465C7.923 2.013 8.277 2 10.715 2h1.6zm-.08 2.057c-2.393 0-2.71.01-3.658.056-1.002.045-1.545.22-1.922.378a2.89 2.89 0 00-1.05.688 2.89 2.89 0 00-.688 1.05c-.158.377-.333.92-.378 1.922-.046.948-.056 1.265-.056 3.658s.01 2.71.056 3.658c.045 1.002.22 1.545.378 1.922.17.405.39.71.688 1.05a2.89 2.89 0 001.05.688c.377.158.92.333 1.922.378.948.046 1.265.056 3.658.056s2.71-.01 3.658-.056c1.002-.045 1.545-.22 1.922-.378a2.89 2.89 0 001.05-.688 2.89 2.89 0 00.688-1.05c.158-.377.333-.92.378-1.922.046-.948.056-1.265.056-3.658s-.01-2.71-.056-3.658c-.045-1.002-.22-1.545-.378-1.922a2.89 2.89 0 00-.688-1.05 2.89 2.89 0 00-1.05-.688c-.377-.158-.92-.333-1.922-.378-.948-.046-1.265-.056-3.658-.056zM12 8.25a3.75 3.75 0 100 7.5 3.75 3.75 0 000-7.5zm0 9.5a5.75 5.75 0 110-11.5 5.75 5.75 0 010 11.5z" fill-rule="evenodd"></path></svg>
+</a>
+<a class="text-gray-400 hover:text-white transition" href="#">
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-16 border-t border-gray-800 pt-8 text-center">
+<p class="text-sm text-gray-500">© 2025 Active Motion Kenya. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const bikeToggle = document.getElementById('bike-package');
+    const basePriceElement = document.getElementById('basePrice');
+    const displayBasePrice = document.getElementById('displayBasePrice');
+    const bikePriceRow = document.getElementById('bikePriceRow');
+    const bikePriceElement = document.getElementById('bikePrice');
+    const grandTotalElement = document.getElementById('grandTotal');
+    
+    // Parse prices (remove commas and convert to numbers)
+    const basePrice = parseInt(basePriceElement.textContent.replace(/[^0-9]/g, ''));
+    const bikePackagePrice = 3000; // KES 3,000
+    
+    // Format number with commas
+    const formatPrice = (num) => 'KES ' + num.toLocaleString('en-US');
+    
+    // Update all price displays
+    function updatePrices() {
+      const total = bikeToggle.checked ? basePrice + bikePackagePrice : basePrice;
+      
+      // Toggle bike price row visibility
+      bikePriceRow.classList.toggle('hidden', !bikeToggle.checked);
+      
+      // Update all displayed prices
+      grandTotalElement.textContent = formatPrice(total);
+      displayBasePrice.textContent = formatPrice(basePrice);
+      bikePriceElement.textContent = formatPrice(bikePackagePrice);
+    }
+    
+    // Initialize
+    bikeToggle.addEventListener('change', updatePrices);
+    updatePrices();
+    
+    // Make responsive - adjust layout if needed
+    function handleResponsive() {
+      // You can add specific responsive adjustments here if needed
+    }
+    
+    // Add event listeners for responsiveness
+    window.addEventListener('resize', handleResponsive);
+    window.addEventListener('load', handleResponsive);
+  });
+</script>
+</body></html>

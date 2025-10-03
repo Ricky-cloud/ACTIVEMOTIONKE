@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Adventure Planner</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+        :root {
+            --primary-color: #137feb;
+        }
+        .group:hover .group-hover\:block {
+            display: block;
+        }
+        .peer:checked~.peer-checked\:block {
+            display: block;
+        }
+        .peer:checked~.peer-checked\:hidden {
+            display: none;
+        }
+           .search-input {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .search-container:focus-within .search-input {
+            width: 250px;
+            opacity: 1;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+        }
+        .search-icon {
+            right: 0.5rem;
+        }
+        .search-container:focus-within .search-icon {
+            color: var(--brand-orange-yellow);
+        }
+    </style>
+</head>
+<body class="bg-slate-50" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<header class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 80 backdrop-blur-sm">
+<div class="container mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 md:px-12">
+<a class="flex items-center gap-3 text-2xl font-bold text-white" href="#">
+<svg class="size-8 text-[var(--brand-orange-yellow)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<span class="hidden sm:inline">Active Motion Kenya</span>
+</a>
+<nav class="hidden items-center gap-6 lg:flex">
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="tours.html">Home</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="packages.html">Packages</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="about.html">About Us</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Contact</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Private Adventures</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="search-container group relative hidden items-center lg:flex">
+<input class="search-input h-10 rounded-full border-none bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search destinations..." type="search"/>
+<svg class="search-icon pointer-events-none absolute h-5 w-5 text-white transition-colors group-focus-within:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full px-6 text-sm font-medium text-white transition-colors hover:bg-white/20"> Log In </button>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full border border-white bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[var(--text-dark)]"> Sign Up </button>
+<button class="lg:hidden">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<div class="relative min-h-[400px] flex items-center justify-center bg-cover bg-center" style='background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5)), url("https://lh3.googleusercontent.com/aida-public/AB6AXuCvdwG3E9l3_P-3VW8zYo_SQ25V4jBqctG6BFyjz9o-38dd8l7hHAqeCDw1yr1_w9BWEi5uJPtPJj6CgHfNLx6h7NNUhRXS8ooaAysqQz79_7-M3ExnWEOOqTOMhoOTM28z1j3iJiEYFpxGDsJxzkVEFXbjaLwMfMp9isER6TqsrckK_87KrVdISIs352vwuu0XOMVxkN0K9JaSP2KoPSpQ7hTqx_cx3SBdnEhqSRVFgxnGe-pxnkOr2CPWZjUTOSdVZ448yyOTjuA");'>
+<div class="text-center text-white p-4">
+<h1 class="text-5xl font-extrabold tracking-tight md:text-6xl">Create Your Perfect Trip</h1>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-slate-200">
+                        Follow the steps below to design your dream getaway.
+                    </p>
+</div>
+</div>
+<div class="mx-auto max-w-4xl px-4 py-16 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-[1fr_3fr] gap-12">
+<aside class="md:sticky md:top-24 h-fit">
+<h2 class="text-lg font-semibold text-slate-900">Trip Progress</h2>
+<nav class="mt-4">
+<ul class="space-y-4">
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-[var(--primary-color)]" href="#destination">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-[var(--primary-color)] text-white">1</div>
+<span>Destination</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]" href="#dates">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">2</div>
+<span>Dates</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]" href="#activities">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">3</div>
+<span>Activities</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]" href="#accommodation">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">4</div>
+<span>Accommodation</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]" href="#budget">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">5</div>
+<span>Budget</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-sm font-medium text-slate-600 hover:text-[var(--primary-color)]" href="#preview">
+<div class="flex h-6 w-6 items-center justify-center rounded-full bg-slate-200">6</div>
+<span>Preview</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="mt-8">
+<div class="relative h-2 rounded-full bg-slate-200">
+<div class="absolute h-2 rounded-full bg-[var(--primary-color)]" style="width: 20%;"></div>
+</div>
+<p class="mt-2 text-sm font-medium text-slate-500">20% complete</p>
+</div>
+</aside>
+<div class="space-y-16">
+<section id="destination">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">1. Choose Your Destination</h2>
+<p class="mt-2 text-slate-600">Select where you'd like to go.</p>
+<div class="mt-6">
+<label class="block text-sm font-medium text-slate-700" for="destination-select">Destination</label>
+<select class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="destination-select" name="destination">
+<option>Select a destination</option>
+<option>Aspen</option>
+<option>Maldives</option>
+<option>New York</option>
+<option>Yosemite</option>
+</select>
+</div>
+<div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-2 xl:gap-x-8">
+<div class="group relative cursor-pointer">
+<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-slate-200 xl:aspect-h-8 xl:aspect-w-7">
+<img alt="Aspen" class="h-full w-full object-cover object-center transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwJEKNUMHQOWd6XN3_NVjIvcMAs-1rHg1ArheY-TLou8QwpUP_SgaZnq1z2NUd3GLp3AQmVqcIR9H0riySGQyODrDQwoNMFvm1FPUVNNCWom3srgv2a6GzjrVmGo-uRIWW9UM6meuUTvyhaKtyrfrvE-6E90H7G1Y38IEsfJTubPghG2K7lkbp6ZFEdRKc08ZLKB7Gh1_g8jVdmh1HImSyJ_Ej_04m4CYppJRCfGa0Vk5LqF4tfleCkzhBwAS48enoWPvTEifADkU"/>
+</div>
+<div class="mt-4">
+<h3 class="text-base font-semibold text-slate-900">Aspen</h3>
+<p class="mt-1 text-sm text-slate-500">Skiing and mountain views</p>
+</div>
+</div>
+<div class="group relative cursor-pointer">
+<div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-slate-200 xl:aspect-h-8 xl:aspect-w-7">
+<img alt="Maldives" class="h-full w-full object-cover object-center transition-transform group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxy408MqAbe5WleJ-F-pJK4GPHoQ5oZcY57Q05HlcypQsJw29al7HB0QN95-tGCi1VdhlrlIXlRh0lz2SOgmK1m3ED1Mm5Dg6sX4AeDIaL0GlFZQIPGmLFdJ6Kf_lkn_grkea2BlE2AUrVZOudUIt9kydm97-Hz6ig6R11Er7RebzlWR1b3ZkakMLIw0-tzLvq7g4sYVHipiy6zOL380MP9YnhBlZmGrRclzWBh3qfq6ZEzw4iD4ZkFEUglK-eKSY4CMDw4hXdeiE"/>
+</div>
+<div class="mt-4">
+<h3 class="text-base font-semibold text-slate-900">Maldives</h3>
+<p class="mt-1 text-sm text-slate-500">Tropical paradise</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="dates">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">2. Select Your Dates</h2>
+<p class="mt-2 text-slate-600">Choose the start and end dates for your trip.</p>
+<div class="mt-6 flex flex-col items-center justify-center gap-8 md:flex-row md:items-start">
+<div class="w-full max-w-sm rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+<div class="flex items-center justify-between">
+<button class="rounded-full p-2 hover:bg-slate-100">
+<svg class="h-5 w-5 text-slate-600" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path>
+</svg>
+</button>
+<p class="text-base font-semibold text-slate-900">October 2024</p>
+<div class="w-9"></div>
+</div>
+<div class="mt-4 grid grid-cols-7 gap-y-2 text-center">
+<p class="text-sm font-semibold text-slate-500">S</p>
+<p class="text-sm font-semibold text-slate-500">M</p>
+<p class="text-sm font-semibold text-slate-500">T</p>
+<p class="text-sm font-semibold text-slate-500">W</p>
+<p class="text-sm font-semibold text-slate-500">T</p>
+<p class="text-sm font-semibold text-slate-500">F</p>
+<p class="text-sm font-semibold text-slate-500">S</p>
+<div class="col-start-4 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">1</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">2</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">3</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">4</div>
+<div class="bg-blue-100/50 rounded-l-full h-10 w-10 flex items-center justify-center text-sm font-medium text-white bg-[var(--primary-color)]">5</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">6</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">7</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">8</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">9</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">10</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">11</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">12</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">13</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">14</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">15</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">16</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">17</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">18</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">19</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">20</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">21</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">22</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">23</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">24</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">25</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">26</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">27</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">28</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">29</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">30</div>
+</div>
+</div>
+<div class="w-full max-w-sm rounded-lg border border-slate-200 bg-white p-4 shadow-sm">
+<div class="flex items-center justify-between">
+<div class="w-9"></div>
+<p class="text-base font-semibold text-slate-900">November 2024</p>
+<button class="rounded-full p-2 hover:bg-slate-100">
+<svg class="h-5 w-5 text-slate-600" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path>
+</svg>
+</button>
+</div>
+<div class="mt-4 grid grid-cols-7 gap-y-2 text-center">
+<p class="text-sm font-semibold text-slate-500">S</p>
+<p class="text-sm font-semibold text-slate-500">M</p>
+<p class="text-sm font-semibold text-slate-500">T</p>
+<p class="text-sm font-semibold text-slate-500">W</p>
+<p class="text-sm font-semibold text-slate-500">T</p>
+<p class="text-sm font-semibold text-slate-500">F</p>
+<p class="text-sm font-semibold text-slate-500">S</p>
+<div class="bg-blue-100 col-start-6 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">1</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">2</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">3</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">4</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">5</div>
+<div class="bg-blue-100 h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">6</div>
+<div class="bg-blue-100/50 rounded-r-full h-10 w-10 flex items-center justify-center text-sm font-medium text-white bg-[var(--primary-color)]">7</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">8</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">9</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">10</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">11</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">12</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">13</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">14</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">15</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">16</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">17</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">18</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">19</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">20</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">21</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">22</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">23</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">24</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">25</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">26</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">27</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">28</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">29</div>
+<div class="h-10 w-10 flex items-center justify-center text-sm font-medium text-slate-700">30</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="activities">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">3. What are your interests?</h2>
+<p class="mt-2 text-slate-600">Select activities to personalize your itinerary.</p>
+<div class="mt-6 flex flex-wrap gap-3">
+<button class="rounded-full bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-300">Hiking</button>
+<button class="rounded-full bg-[var(--primary-color)] px-4 py-2 text-sm font-medium text-white transition-colors">Skiing</button>
+<button class="rounded-full bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-300">Beach</button>
+<button class="rounded-full bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-300">City Exploration</button>
+<button class="rounded-full bg-[var(--primary-color)] px-4 py-2 text-sm font-medium text-white transition-colors">Food</button>
+<button class="rounded-full bg-slate-200 px-4 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-slate-300">Shopping</button>
+</div>
+</div>
+</section>
+<section id="accommodation">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">4. Accommodation Preferences</h2>
+<p class="mt-2 text-slate-600">Tell us where you'd like to stay.</p>
+<div class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+<div class="flex cursor-pointer items-center gap-4 rounded-lg border-2 border-[var(--primary-color)] p-4 shadow-md">
+<svg class="h-8 w-8 text-[var(--primary-color)]" fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"></path>
+</svg>
+<h3 class="text-base font-semibold text-slate-900">House</h3>
+</div>
+<div class="flex cursor-pointer items-center gap-4 rounded-lg border border-slate-200 p-4 shadow-sm transition-all hover:border-[var(--primary-color)] hover:shadow-md">
+<svg class="h-8 w-8 text-slate-600" fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M255.31,196.75l-64-144A8,8,0,0,0,184,48H72a8,8,0,0,0-7.27,4.69.21.21,0,0,0,0,.06l0,.12,0,0L.69,196.75A8,8,0,0,0,8,208H248a8,8,0,0,0,7.31-11.25ZM64,192H20.31L64,93.7Zm16,0V93.7L123.69,192Zm61.2,0L84.31,64H178.8l56.89,128Z"></path>
+</svg>
+<h3 class="text-base font-semibold text-slate-900">Camping</h3>
+</div>
+<div class="flex cursor-pointer items-center gap-4 rounded-lg border border-slate-200 p-4 shadow-sm transition-all hover:border-[var(--primary-color)] hover:shadow-md">
+<svg class="h-8 w-8 text-slate-600" fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M208,72H24V48A8,8,0,0,0,8,48V208a8,8,0,0,0,16,0V176H232v32a8,8,0,0,0,16,0V112A40,40,0,0,0,208,72ZM24,88H96v72H24Zm88,72V88h96a24,24,0,0,1,24,24v48Z"></path>
+</svg>
+<h3 class="text-base font-semibold text-slate-900">Hotel</h3>
+</div>
+</div>
+</div>
+</section>
+<section id="budget">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">5. Budget Estimator</h2>
+<p class="mt-2 text-slate-600">Adjust the slider to set your budget and see an estimated cost breakdown.</p>
+<div class="mt-8">
+<label class="block text-sm font-medium text-slate-700" for="budget-range">Your Budget: <span class="font-bold text-[var(--primary-color)]">$2500</span></label>
+<input class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer mt-2 accent-[var(--primary-color)]" id="budget-range" max="10000" min="500" type="range" value="2500"/>
+<div class="flex justify-between text-xs text-slate-500 mt-1">
+<span>$500</span>
+<span>$10000</span>
+</div>
+</div>
+<div class="mt-8 bg-slate-50 p-6 rounded-lg border border-slate-200">
+<h3 class="text-lg font-semibold text-slate-800">Estimated Cost Breakdown</h3>
+<div class="mt-4 space-y-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+<svg class="h-5 w-5 text-[var(--primary-color)]" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 48.678 48.678 0 00-7.324 0 4.006 4.006 0 00-3.7 3.7c-.092 1.21-.138 2.43-.138 3.662a4.006 4.006 0 003.7 3.7 48.656 48.656 0 007.324 0 4.006 4.006 0 003.7-3.7zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-slate-600">Accommodation</span>
+</div>
+<span class="font-semibold text-slate-800">$1200</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2.5">
+<div class="bg-[var(--primary-color)] h-2.5 rounded-full" style="width: 48%"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+<svg class="h-5 w-5 text-green-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-slate-600">Activities</span>
+</div>
+<span class="font-semibold text-slate-800">$800</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2.5">
+<div class="bg-green-500 h-2.5 rounded-full" style="width: 32%"></div>
+</div>
+<div class="flex justify-between items-center mt-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-yellow-100 flex items-center justify-center">
+<svg class="h-5 w-5 text-yellow-500" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<span class="text-slate-600">Food &amp; Drink</span>
+</div>
+<span class="font-semibold text-slate-800">$500</span>
+</div>
+<div class="w-full bg-slate-200 rounded-full h-2.5">
+<div class="bg-yellow-500 h-2.5 rounded-full" style="width: 20%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="preview">
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">6. Trip Preview</h2>
+<p class="mt-2 text-slate-600">Review your trip details before saving.</p>
+<div class="mt-6 overflow-hidden rounded-lg bg-white shadow-lg">
+<div class="aspect-h-9 aspect-w-16 w-full">
+<img alt="Map preview of the trip" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ8hr_f612LDRM4UCKYawSm6bVguQpx69_9BDE1vPlCLctikKguSpDUqpAddxNsTIIQVCWJD9LobDJr3chE6MT6NcyrFa2SCVNR0nz_67hEAWEeG3hY9f-O6uUhTGFM2RpnWIZ0T0UVwGU1kEkNQ1AKuQkFrjQOTNeUJYEbIsfXjtyUpHD0PfiE2vh7cbipKkPVeKfbYGK60ah2r2rQvz-EFq32R6ZF-Zy9-VviQQh5I7RVagPlVBIxFOkGopdVvCfB8PvxFCCtl4"/>
+</div>
+<div class="p-6">
+<dl class="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2">
+<div class="sm:col-span-1">
+<dt class="text-sm font-medium text-slate-500">Destination</dt>
+<dd class="mt-1 text-base font-semibold text-slate-900">Aspen</dd>
+</div>
+<div class="sm:col-span-1">
+<dt class="text-sm font-medium text-slate-500">Dates</dt>
+<dd class="mt-1 text-base font-semibold text-slate-900">Oct 5 - Nov 7, 2024</dd>
+</div>
+<div class="sm:col-span-1">
+<dt class="text-sm font-medium text-slate-500">Activities</dt>
+<dd class="mt-1 text-base font-semibold text-slate-900">Skiing, Food</dd>
+</div>
+<div class="sm:col-span-1">
+<dt class="text-sm font-medium text-slate-500">Accommodation</dt>
+<dd class="mt-1 text-base font-semibold text-slate-900">House</dd>
+</div>
+<div class="sm:col-span-2">
+<dt class="text-sm font-medium text-slate-500">Estimated Cost</dt>
+<dd class="mt-1 text-2xl font-bold text-[var(--primary-color)]">$2,500</dd>
+</div>
+</dl>
+</div>
+</div>
+</div>
+</section>
+<div class="flex justify-end pt-8">
+<label class="inline-flex items-center justify-center rounded-xl bg-[var(--primary-color)] px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-105 cursor-pointer" for="payment-modal-trigger">Submit</label>
+</div>
+</div>
+</div>
+</div>
+<section class="bg-slate-100 py-16 sm:py-20">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="text-center">
+<h2 class="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">Local Insights &amp; Plans for Aspen</h2>
+<p class="mt-4 max-w-2xl mx-auto text-lg text-slate-600">Discover hidden gems and make the most of your trip with our curated suggestions.</p>
+</div>
+<div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+<div class="p-6">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0">
+<div class="h-12 w-12 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+<path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Local Tips &amp; Hidden Gems</h3>
+</div>
+<ul class="mt-4 space-y-3 text-slate-600">
+<li class="flex items-start">
+<svg class="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>Visit the Maroon Bells for breathtaking sunrise views, but book your shuttle in advance!</span>
+</li>
+<li class="flex items-start">
+<svg class="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>Explore the lesser-known Smuggler Mountain Trail for great views without the crowds.</span>
+</li>
+<li class="flex items-start">
+<svg class="h-5 w-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+<path clip-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" fill-rule="evenodd"></path>
+</svg>
+<span>Enjoy après-ski like a local at the Ajax Tavern at the base of Aspen Mountain.</span>
+</li>
+</ul>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+<div class="p-6">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0">
+<div class="h-12 w-12 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Suggested 3-Day Plan</h3>
+</div>
+<ul class="mt-4 space-y-3 text-slate-600">
+<li class="flex items-start"><span class="font-semibold text-slate-800 w-16 shrink-0">Day 1:</span><span>Arrival and exploration of downtown Aspen, followed by dinner at a farm-to-table restaurant.</span></li>
+<li class="flex items-start"><span class="font-semibold text-slate-800 w-16 shrink-0">Day 2:</span><span>Full day of skiing on Aspen Mountain, with a gourmet lunch on the slopes.</span></li>
+<li class="flex items-start"><span class="font-semibold text-slate-800 w-16 shrink-0">Day 3:</span><span>Morning hike to the scenic Crater Lake, followed by souvenir shopping before departure.</span></li>
+</ul>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-1 transition-transform duration-300">
+<div class="p-6">
+<div class="flex items-center gap-4">
+<div class="flex-shrink-0">
+<div class="h-12 w-12 rounded-full bg-[var(--primary-color)] text-white flex items-center justify-center">
+<svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<h3 class="text-xl font-bold text-slate-900">Best Time to Visit</h3>
+</div>
+<p class="mt-4 text-slate-600">For the best skiing conditions, visit between December and February. For hiking and summer activities, June through September offers pleasant weather and stunning scenery. The fall colors in late September are spectacular.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-slate-200 border-t border-slate-300">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<div>
+<h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Company</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">About Us</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Careers</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Press</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Blog</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Support</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Contact Us</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">FAQ</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Terms of Service</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Quick Links</h3>
+<ul class="mt-4 space-y-4">
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">My Trips</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Destinations</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Travel Guides</a></li>
+<li><a class="text-base text-slate-600 hover:text-[var(--primary-color)]" href="#">Special Offers</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-sm font-semibold text-slate-900 tracking-wider uppercase">Follow Us</h3>
+<div class="mt-4 flex space-x-4">
+<a class="text-slate-500 hover:text-[var(--primary-color)]" href="#">
+<span class="sr-only">Facebook</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-slate-500 hover:text-[var(--primary-color)]" href="#">
+<span class="sr-only">Instagram</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path clip-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.024.06 1.378.06 3.808s-.012 2.784-.06 3.808c-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.024.048-1.378.06-3.808.06s-2.784-.012-3.808-.06c-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.048-1.024-.06-1.378-.06-3.808s.012-2.784.06-3.808c.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 016.08 2.525c.636-.247 1.363-.416 2.427-.465C9.531 2.013 9.885 2 12.315 2zM12 7.167a4.833 4.833 0 100 9.666 4.833 4.833 0 000-9.666zM12 15a3 3 0 110-6 3 3 0 010 6zm4.833-8.167a1.167 1.167 0 100-2.333 1.167 1.167 0 000 2.333z" fill-rule="evenodd"></path>
+</svg>
+</a>
+<a class="text-slate-500 hover:text-[var(--primary-color)]" href="#">
+<span class="sr-only">Twitter</span>
+<svg aria-hidden="true" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+<path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-slate-300 pt-8 text-center text-sm text-slate-500">
+<p>© 2024 Adventure Planner. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+<input class="peer sr-only" id="payment-modal-trigger" type="checkbox"/>
+<div class="fixed inset-0 z-40 hidden bg-black/50 backdrop-blur-sm peer-checked:block"></div>
+<div class="fixed inset-0 z-50 hidden items-center justify-center peer-checked:flex">
+<div class="relative w-full max-w-lg mx-4">
+<label class="absolute top-4 right-4 h-8 w-8 flex items-center justify-center rounded-full bg-slate-200 hover:bg-slate-300 transition-colors cursor-pointer" for="payment-modal-trigger">
+<svg class="h-5 w-5 text-slate-600" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path>
+</svg>
+</label>
+<div class="bg-white p-8 rounded-xl shadow-lg border border-slate-200 max-h-[90vh] overflow-y-auto">
+<h2 class="text-2xl font-bold tracking-tight text-slate-900">Payment Details</h2>
+<p class="mt-2 text-slate-600">Please enter your payment information to confirm your trip.</p>
+<form class="mt-6 space-y-6">
+<div>
+<label class="block text-sm font-medium text-slate-700" for="card-number">Card Number</label>
+<div class="relative mt-1">
+<input class="block w-full rounded-md border-slate-300 pl-10 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="card-number" name="card-number" placeholder="0000 0000 0000 0000" type="text"/>
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-slate-400" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M216,48H40A16,16,0,0,0,24,64V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48ZM40,64H216v32H40ZM216,192H40V112H216.06l.29,1.15.05.2,4.3,17.21A8,8,0,0,1,212.8,136H72a8,8,0,0,1,0-16h88a8,8,0,0,1,0,16H184a8,8,0,0,1,0,16h8a8,8,0,0,1,0,16H168a8,8,0,0,1,0-16h48.8a8,8,0,0,1,7.2,4.6l5,20Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-3">
+<div class="sm:col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="expiration-date">Expiration</label>
+<input class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="expiration-date" name="expiration-date" placeholder="MM/YY" type="text"/>
+</div>
+<div class="sm:col-span-1">
+<label class="block text-sm font-medium text-slate-700" for="cvv">CVV</label>
+<input class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="cvv" name="cvv" placeholder="123" type="text"/>
+</div>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700" for="cardholder-name">Cardholder Name</label>
+<input class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="cardholder-name" name="cardholder-name" placeholder="John Doe" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-medium text-slate-700" for="billing-address">Billing Address</label>
+<input class="mt-1 block w-full rounded-md border-slate-300 shadow-sm focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] sm:text-sm" id="billing-address" name="billing-address" placeholder="123 Main St, City, Country" type="text"/>
+</div>
+<div class="flex justify-end pt-4">
+<button class="w-full inline-flex items-center justify-center rounded-xl bg-[var(--primary-color)] px-8 py-3 text-base font-bold text-white shadow-lg transition-transform hover:scale-105" type="submit">Pay Now</button>
+</div>
+</form>
+</div>
+</div>
+</div>
+
+</body></html>

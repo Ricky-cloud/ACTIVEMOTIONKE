@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #1a4f8b;
+            --secondary-blue: #3a7cce;
+            --light-blue: #e8f1ff;
+            --primary-orange: #ff7b3a;
+            --secondary-orange: #ff9d6a;
+            --light-orange: #fff2eb;
+            --dark-gray: #333;
+            --light-gray: #f8f9fa;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f5f7fa;
+            color: var(--dark-gray);
+            overflow-x: hidden;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: linear-gradient(to bottom, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            height: 100vh;
+            position: fixed;
+            padding-top: 60px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            width: 250px;
+            transition: all 0.3s ease;
+            left: 0;
+        }
+        
+        .sidebar.collapsed {
+            left: -250px;
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            margin: 6px 0;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .sidebar .nav-link:hover, 
+        .sidebar .nav-link.active {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sidebar .nav-link i {
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 250px;
+            padding: 20px;
+            padding-top: 80px;
+            transition: all 0.3s ease;
+        }
+        
+        .main-content.expanded {
+            margin-left: 0;
+        }
+        
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 250px;
+            z-index: 900;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        
+        .header.expanded {
+            left: 0;
+        }
+        
+        /* Cards */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stat-card {
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .bookings-card {
+            background: linear-gradient(45deg, var(--primary-blue), var(--secondary-blue));
+        }
+        
+        .revenue-card {
+            background: linear-gradient(45deg, var(--primary-orange), var(--secondary-orange));
+        }
+        
+        .users-card {
+            background: linear-gradient(45deg, #17a2b8, #20c997);
+        }
+        
+        /* Charts */
+        .chart-container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background-color: var(--primary-blue);
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .btn-warning {
+            background-color: var(--primary-orange);
+            border: none;
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background-color: var(--secondary-orange);
+            color: white;
+        }
+        
+        /* Tables */
+        .table th {
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            border-top: none;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .sidebar {
+                left: -250px;
+                width: 250px;
+            }
+            
+            .sidebar.show {
+                left: 0;
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .header {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: block !important;
+            }
+        }
+        
+        /* Toggle button for mobile */
+        .menu-toggle {
+            display: none;
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 12px;
+        }
+        
+        /* Badges */
+        .badge-success {
+            background-color: #28a745;
+        }
+        
+        .badge-warning {
+            background-color: var(--primary-orange);
+        }
+        
+        .badge-danger {
+            background-color: #dc3545;
+        }
+        
+        /* Activity feed */
+        .activity-feed {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .activity-feed li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .activity-feed li:last-child {
+            border-bottom: none;
+        }
+        
+        /* User profile */
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        /* Destination Cards */
+        .destination-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .destination-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .destination-card:hover img {
+            transform: scale(1.1);
+        }
+        
+        .destination-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 15px;
+            color: white;
+        }
+        
+        /* Settings */
+        .settings-card {
+            border-left: 4px solid var(--primary-blue);
+        }
+        
+        .settings-card.warning {
+            border-left: 4px solid var(--primary-orange);
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <div class="d-flex flex-column">
+            <div class="text-center mb-4">
+                <h3 class="text-white">ActiveMotion Kenya</h3>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#" data-page="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="bookings">
+                        <i class="fas fa-plane"></i>
+                        <span>Bookings</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="destinations">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Destinations</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="customers">
+                        <i class="fas fa-users"></i>
+                        <span>Customers</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="analytics">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Analytics</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-page="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </a>
+                </li>
+                <li class="nav-item mt-4">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="header" id="header">
+        <button class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+        <h4 class="m-0" id="pageTitle">Dashboard</h4>
+        <div class="d-flex align-items-center">
+            <div class="notifications me-3">
+                <i class="fas fa-bell text-muted"></i>
+                <span class="badge bg-danger rounded-pill">3</span>
+            </div>
+            <div class="user-profile d-flex align-items-center">
+                <img src="https://randomuser.me/api/portraits/men/41.jpg" alt="User">
+                <div class="ms-2 d-none d-md-block">
+                    <div class="fw-bold">John Doe</div>
+                    <div class="text-muted small">Admin</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <div class="container-fluid">
+            <!-- Dashboard Page -->
+            <div class="page-content active" id="dashboard">
+                <!-- Stats Cards -->
+                <div class="row">
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card bookings-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Total Bookings</h6>
+                                        <h3 class="card-text">1,248</h3>
+                                        <p class="card-text"><i class="fas fa-arrow-up"></i> 15% from last month</p>
+                                    </div>
+                                    <div class="icon-large">
+                                        <i class="fas fa-calendar-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card revenue-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Revenue</h6>
+                                        <h3 class="card-text">$62,580</h3>
+                                        <p class="card-text"><i class="fas fa-arrow-up"></i> 22% from last month</p>
+                                    </div>
+                                    <div class="icon-large">
+                                        <i class="fas fa-dollar-sign"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card stat-card users-card">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="card-title">Users</h6>
+                                        <h3 class="card-text">3,895</h3>
+                                        <p class="card-text"><i class="fas fa-arrow-up"></i> 10% from last month</p>
+                                    </div>
+                                    <div class="icon-large">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Destinations</h6>
+                                <h3 class="card-text">24</h3>
+                                <div class="progress mt-3">
+                                    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="card-text mt-2">15 new destinations this year</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts and Activities -->
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="chart-container">
+                            <h5 class="mb-4">Booking Analytics</h5>
+                            <canvas id="bookingChart" height="250"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Recent Activities</h5>
+                                <ul class="activity-feed">
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>New booking from Sarah</span>
+                                            <span class="badge badge-success">Completed</span>
+                                        </div>
+                                        <small class="text-muted">2 minutes ago</small>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>John cancelled his trip</span>
+                                            <span class="badge badge-danger">Cancelled</span>
+                                        </div>
+                                        <small class="text-muted">15 minutes ago</small>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>New user registered</span>
+                                            <span class="badge badge-success">Completed</span>
+                                        </div>
+                                        <small class="text-muted">45 minutes ago</small>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>Payment from Michael</span>
+                                            <span class="badge badge-warning">Pending</span>
+                                        </div>
+                                        <small class="text-muted">1 hour ago</small>
+                                    </li>
+                                    <li>
+                                        <div class="d-flex justify-content-between">
+                                            <span>New review for Paris tour</span>
+                                            <span class="badge badge-success">Completed</span>
+                                        </div>
+                                        <small class="text-muted">3 hours ago</small>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Bookings -->
+                <div class="row mt-4">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Recent Bookings</h5>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>Booking ID</th>
+                                                <th>Customer</th>
+                                                <th>Destination</th>
+                                                <th>Date</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#TR-1258</td>
+                                                <td>Sarah Johnson</td>
+                                                <td>Paris, France</td>
+                                                <td>15 Aug 2023</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1257</td>
+                                                <td>Michael Brown</td>
+                                                <td>Bali, Indonesia</td>
+                                                <td>18 Aug 2023</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1256</td>
+                                                <td>Emily Davis</td>
+                                                <td>Santorini, Greece</td>
+                                                <td>20 Aug 2023</td>
+                                                <td><span class="badge bg-info">Confirmed</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1255</td>
+                                                <td>Robert Wilson</td>
+                                                <td>Tokyo, Japan</td>
+                                                <td>22 Aug 2023</td>
+                                                <td><span class="badge bg-danger">Cancelled</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1254</td>
+                                                <td>Jessica Martinez</td>
+                                                <td>New York, USA</td>
+                                                <td>25 Aug 2023</td>
+                                                <td><span class="badge bg-success">Completed</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn btn-primary">View All Bookings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bookings Page -->
+            <div class="page-content" id="bookings">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Manage Bookings</h4>
+                                <p>View and manage all travel bookings from this panel.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-3">
+                                        <div class="card bg-primary text-white">
+                                            <div class="card-body">
+                                                <h5>Total Bookings</h5>
+                                                <h3>1,248</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body">
+                                                <h5>Confirmed</h5>
+                                                <h3>892</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-warning text-white">
+                                            <div class="card-body">
+                                                <h5>Pending</h5>
+                                                <h3>156</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-danger text-white">
+                                            <div class="card-body">
+                                                <h5>Cancelled</h5>
+                                                <h3>200</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Booking ID</th>
+                                                <th>Customer</th>
+                                                <th>Destination</th>
+                                                <th>Departure</th>
+                                                <th>Return</th>
+                                                <th>Travelers</th>
+                                                <th>Price</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#TR-1289</td>
+                                                <td>John Smith</td>
+                                                <td>Paris, France</td>
+                                                <td>15/09/2023</td>
+                                                <td>22/09/2023</td>
+                                                <td>2</td>
+                                                <td>$1,250</td>
+                                                <td><span class="badge bg-success">Confirmed</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1288</td>
+                                                <td>Emma Wilson</td>
+                                                <td>Bali, Indonesia</td>
+                                                <td>20/09/2023</td>
+                                                <td>30/09/2023</td>
+                                                <td>4</td>
+                                                <td>$3,420</td>
+                                                <td><span class="badge bg-warning">Pending</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#TR-1287</td>
+                                                <td>Michael Brown</td>
+                                                <td>Tokyo, Japan</td>
+                                                <td>05/10/2023</td>
+                                                <td>15/10/2023</td>
+                                                <td>1</td>
+                                                <td>$2,150</td>
+                                                <td><span class="badge bg-info">Processing</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Destinations Page -->
+            <div class="page-content" id="destinations">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Popular Destinations</h4>
+                                <p>Manage and explore all travel destinations available for booking.</p>
+                                
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Paris">
+                                            <div class="destination-overlay">
+                                                <h5>Paris, France</h5>
+                                                <p>25 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1518548419970-58e3b4079ab2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Bali">
+                                            <div class="destination-overlay">
+                                                <h5>Bali, Indonesia</h5>
+                                                <p>18 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Santorini">
+                                            <div class="destination-overlay">
+                                                <h5>Santorini, Greece</h5>
+                                                <p>15 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1528164344705-47542687000d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Tokyo">
+                                            <div class="destination-overlay">
+                                                <h5>Tokyo, Japan</h5>
+                                                <p>20 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1502602898536-47ad22581b52?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="Paris">
+                                            <div class="destination-overlay">
+                                                <h5>Swiss Alps</h5>
+                                                <p>12 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="destination-card">
+                                            <img src="https://images.unsplash.com/photo-1539667547529-84b2b9d3b9e7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80" alt="New York">
+                                            <div class="destination-overlay">
+                                                <h5>New York, USA</h5>
+                                                <p>22 Tours</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mt-4">
+                                    <h4>Add New Destination</h4>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Destination Name</label>
+                                                <input type="text" class="form-control" placeholder="Enter destination name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="mb-3">
+                                                <label class="form-label">Country</label>
+                                                <input type="text" class="form-control" placeholder="Enter country">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="mb-3">
+                                                <label class="form-label">Description</label>
+                                                <textarea class="form-control" rows="3" placeholder="Enter destination description"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button class="btn btn-primary">Add Destination</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Page -->
+            <div class="page-content" id="customers">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Customer Management</h4>
+                                <p>View and manage all customer information and bookings.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-3">
+                                        <div class="card bg-primary text-white">
+                                            <div class="card-body">
+                                                <h5>Total Customers</h5>
+                                                <h3>3,895</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-success text-white">
+                                            <div class="card-body">
+                                                <h5>Active Customers</h5>
+                                                <h3>2,541</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-info text-white">
+                                            <div class="card-body">
+                                                <h5>New This Month</h5>
+                                                <h3>324</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="card bg-warning text-white">
+                                            <div class="card-body">
+                                                <h5>Pending Verification</h5>
+                                                <h3>56</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="table-responsive">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Customer ID</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Phone</th>
+                                                <th>Country</th>
+                                                <th>Bookings</th>
+                                                <th>Last Activity</th>
+                                                <th>Status</th>
+                                                <th>Actions</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>#CU-1001</td>
+                                                <td>John Smith</td>
+                                                <td>john.smith@example.com</td>
+                                                <td>+1 234 567 890</td>
+                                                <td>United States</td>
+                                                <td>12</td>
+                                                <td>2 days ago</td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#CU-1002</td>
+                                                <td>Emma Wilson</td>
+                                                <td>emma.wilson@example.com</td>
+                                                <td>+44 123 456 789</td>
+                                                <td>United Kingdom</td>
+                                                <td>8</td>
+                                                <td>5 days ago</td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>#CU-1003</td>
+                                                <td>Michael Brown</td>
+                                                <td>michael.b@example.com</td>
+                                                <td>+61 123 456 789</td>
+                                                <td>Australia</td>
+                                                <td>5</td>
+                                                <td>1 day ago</td>
+                                                <td><span class="badge bg-success">Active</span></td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-primary">View</button>
+                                                    <button class="btn btn-sm btn-warning">Edit</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analytics Page -->
+            <div class="page-content" id="analytics">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Travel Analytics</h4>
+                                <p>Comprehensive analytics and insights for your travel business.</p>
+                                
+                                <div class="row mb-4">
+                                    <div class="col-md-8">
+                                        <div class="chart-container">
+                                            <h5>Revenue Analysis</h5>
+                                            <canvas id="revenueChart" height="250"></canvas>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="chart-container">
+                                            <h5>Booking Sources</h5>
+                                            <canvas id="sourceChart" height="250"></canvas>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Top Destinations</h5>
+                                                <ul class="list-group">
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Paris, France
+                                                        <span class="badge bg-primary rounded-pill">245 bookings</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Bali, Indonesia
+                                                        <span class="badge bg-primary rounded-pill">198 bookings</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Tokyo, Japan
+                                                        <span class="badge bg-primary rounded-pill">176 bookings</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Santorini, Greece
+                                                        <span class="badge bg-primary rounded-pill">154 bookings</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        New York, USA
+                                                        <span class="badge bg-primary rounded-pill">132 bookings</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5>Customer Demographics</h5>
+                                                <canvas id="demographicsChart" height="250"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Page -->
+            <div class="page-content" id="settings">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card settings-card">
+                            <div class="card-body">
+                                <h4 class="card-title">Account Settings</h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Company Name</label>
+                                    <input type="text" class="form-control" value="TravelEase Inc.">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" value="contact@travelease.com">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" value="+1 (234) 567-8900">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Address</label>
+                                    <textarea class="form-control">123 Travel Street, Tourism City, 10001</textarea>
+                                </div>
+                                
+                                <button class="btn btn-primary">Update Profile</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="card settings-card warning">
+                            <div class="card-body">
+                                <h4 class="card-title">Security Settings</h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="twoFactor" checked>
+                                        <label class="form-check-label" for="twoFactor">
+                                            Enable Two-Factor Authentication
+                                        </label>
+                                    </div>
+                                </div>
+                                
+                                <button class="btn btn-warning">Update Password</button>
+                            </div>
+                        </div>
+                        
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h4 class="card-title">System Settings</h4>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Timezone</label>
+                                    <select class="form-select">
+                                        <option>(UTC-05:00) Eastern Time</option>
+                                        <option>(UTC-06:00) Central Time</option>
+                                        <option>(UTC-07:00) Mountain Time</option>
+                                        <option>(UTC-08:00) Pacific Time</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Date Format</label>
+                                    <select class="form-select">
+                                        <option>MM/DD/YYYY</option>
+                                        <option>DD/MM/YYYY</option>
+                                        <option>YYYY-MM-DD</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Currency</label>
+                                    <select class="form-select">
+                                        <option>USD ($)</option>
+                                        <option>EUR (€)</option>
+                                        <option>GBP (£)</option>
+                                        <option>JPY (¥)</option>
+                                    </select>
+                                </div>
+                                
+                                <button class="btn btn-primary">Save Preferences</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Toggle sidebar on mobile
+        document.getElementById('menuToggle').addEventListener('click', function() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        });
+
+        // Page navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Hide all pages
+                document.querySelectorAll('.page-content').forEach(page => page.classList.remove('active'));
+                
+                // Show the selected page
+                const pageId = this.getAttribute('data-page');
+                document.getElementById(pageId).classList.add('active');
+                
+                // Update page title
+                document.getElementById('pageTitle').textContent = this.querySelector('span').textContent;
+                
+                // On mobile, hide sidebar after selection
+                if (window.innerWidth < 992) {
+                    document.getElementById('sidebar').classList.remove('show');
+                }
+            });
+        });
+
+        // Initialize charts
+        const bookingCtx = document.getElementById('bookingChart').getContext('2d');
+        const bookingChart = new Chart(bookingCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Bookings',
+                    data: [65, 59, 80, 81, 56, 55, 72, 78, 80, 85, 90, 95],
+                    backgroundColor: 'rgba(58, 124, 206, 0.2)',
+                    borderColor: 'rgba(58, 124, 206, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }, {
+                    label: 'Revenue',
+                    data: [28, 48, 40, 45, 35, 60, 55, 70, 65, 75, 85, 90],
+                    backgroundColor: 'rgba(255, 123, 58, 0.2)',
+                    borderColor: 'rgba(255, 123, 58, 1)',
+                    borderWidth: 2,
+                    tension: 0.3,
+                    fill: true
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Revenue chart
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        const revenueChart = new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Revenue (in $1000s)',
+                    data: [125, 150, 180, 165],
+                    backgroundColor: 'rgba(58, 124, 206, 0.7)',
+                    borderColor: 'rgba(58, 124, 206, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Source chart
+        const sourceCtx = document.getElementById('sourceChart').getContext('2d');
+        const sourceChart = new Chart(sourceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Website', 'Mobile App', 'Travel Agents', 'Partners'],
+                datasets: [{
+                    data: [45, 30, 15, 10],
+                    backgroundColor: [
+                        'rgba(58, 124, 206, 0.7)',
+                        'rgba(255, 123, 58, 0.7)',
+                        'rgba(40, 167, 69, 0.7)',
+                        'rgba(108, 117, 125, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+
+        // Demographics chart
+        const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
+        const demographicsChart = new Chart(demographicsCtx, {
+            type: 'pie',
+            data: {
+                labels: ['18-25', '26-35', '36-45', '46-55', '56+'],
+                datasets: [{
+                    data: [20, 35, 25, 15, 5],
+                    backgroundColor: [
+                        'rgba(58, 124, 206, 0.7)',
+                        'rgba(255, 123, 58, 0.7)',
+                        'rgba(40, 167, 69, 0.7)',
+                        'rgba(108, 117, 125, 0.7)',
+                        'rgba(220, 53, 69, 0.7)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

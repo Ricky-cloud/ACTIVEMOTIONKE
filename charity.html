@@ -1,0 +1,305 @@
+<html><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B600%3B700%3B800&amp;family=Lora%3Awght%40400%3B500%3B600%3B700" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Kindness Connect</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #f59e0b;--secondary-color: #fefce8;--text-primary: #1c1917;--text-secondary: #57534e;}
+      body {
+        font-family: "Inter", "Noto Sans", sans-serif;
+        color: var(--text-primary);
+      }
+      h1, h2, h3 {
+        font-family: "Lora", serif;
+      }
+      .group:hover .group-hover\:block {
+        display: block;
+      }
+      .group:hover .group-hover\:flex {
+        display: flex;
+      }
+       .search-input {
+            width: 0;
+            padding-left: 0;
+            padding-right: 0;
+            transition: all 0.5s ease-in-out;
+            opacity: 0;
+        }
+        .search-container:focus-within .search-input {
+            width: 250px;
+            opacity: 1;
+            padding-left: 1rem;
+            padding-right: 2.5rem;
+        }
+        .search-icon {
+            right: 0.5rem;
+        }
+        .search-container:focus-within .search-icon {
+            color: var(--brand-orange-yellow);
+        }
+    </style>
+</head>
+<body class="bg-stone-50 text-stone-800">
+<div class="relative flex size-full min-h-screen flex-col group/design-root overflow-x-hidden">
+<header class="fixed top-0 z-50 w-full bg-transparent transition-all duration-300 80 backdrop-blur-sm ">
+<div class="container mx-auto flex max-w-[1440px] items-center justify-between px-6 py-4 md:px-12">
+<a class="flex items-center gap-3 text-2xl font-bold text-white" href="#">
+<svg class="size-8 text-[var(--brand-orange-yellow)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M12.0799 24L4 19.2479L9.95537 8.75216L18.04 13.4961L18.0446 4H29.9554L29.96 13.4961L38.0446 8.75216L44 19.2479L35.92 24L44 28.7521L38.0446 39.2479L29.96 34.5039L29.9554 44H18.0446L18.04 34.5039L9.95537 39.2479L4 28.7521L12.0799 24Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+<span class="hidden sm:inline">Active Motion Kenya</span>
+</a>
+<nav class="hidden items-center gap-6 lg:flex">
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="tours.html">Home</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Packages</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">About Us</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="#">Contact</a>
+<a class="text-base font-medium text-white/80 transition-colors hover:text-white" href="priva">Private Adventures</a>
+</nav>
+<div class="flex items-center gap-4">
+<div class="search-container group relative hidden items-center lg:flex">
+<input class="search-input h-10 rounded-full border-none bg-white/20 text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-white/50" placeholder="Search destinations..." type="search"/>
+<svg class="search-icon pointer-events-none absolute h-5 w-5 text-white transition-colors group-focus-within:text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+<path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full px-6 text-sm font-medium text-white transition-colors hover:bg-white/20"> Log In </button>
+<button class="hidden md:inline-flex h-10 items-center justify-center rounded-full border border-white bg-transparent px-6 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[var(--text-dark)]"> Sign Up </button>
+<button class="lg:hidden">
+<svg class="h-6 w-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 6h16M4 12h16m-7 6h7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1">
+<section class="relative pt-40 pb-24 lg:pt-56 lg:pb-36">
+<div class="absolute inset-0 bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuADvxGfnqX1fcnKLz4OjWui-o7XSa5-HS48yNJyL6R_1Gm-IQ6vIQWIpyFygEl6_r-8oF9f_qLQSBjx_bvS4vYI13xQqZzMhaAA4zlpT4KMEqIoyY3dk4GbQWFPTZHLU6X3SEpgkNaRSYWyUQ75MWGMrVTFmXz8QjxWdPHUB_-9FDj8S3tVEEuC_Y77kz-jrL7NRgKUP1ymywas00qRMDtnwPadsdHwoUlnkPVsF6s9L8Iv5AohzLnS_oa2wHPHsAjCmb_o6pN2-Q");'></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30"></div>
+<div class="relative container mx-auto px-6 text-center text-white">
+<h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight mb-6">Empower Communities Through Your Kindness</h1>
+<p class="max-w-3xl mx-auto text-lg lg:text-xl text-stone-200 mb-10">Join us in making a difference. Your support helps us reach more people and create lasting change.</p>
+<div class="flex flex-wrap gap-4 justify-center">
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-[var(--primary-color)] text-white text-lg font-semibold shadow-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-[var(--primary-color)] transition-all duration-300 transform hover:scale-105 hover:-translate-y-px">
+                Donate Now
+              </button>
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-transparent border-2 border-white text-white text-lg font-semibold shadow-lg hover:bg-white hover:text-stone-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-black/50 focus:ring-white transition-all duration-300 transform hover:scale-105 hover:-translate-y-px">
+                Learn More
+              </button>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="flex flex-col items-center text-center p-8 bg-stone-50 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+<p class="text-6xl font-bold text-[var(--primary-color)] mb-2">12,000+</p>
+<p class="text-xl font-medium text-stone-700">Lives Impacted</p>
+</div>
+<div class="flex flex-col items-center text-center p-8 bg-stone-50 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+<p class="text-6xl font-bold text-[var(--primary-color)] mb-2">50+</p>
+<p class="text-xl font-medium text-stone-700">Projects Completed</p>
+</div>
+<div class="flex flex-col items-center text-center p-8 bg-stone-50 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+<p class="text-6xl font-bold text-[var(--primary-color)] mb-2">3,000+</p>
+<p class="text-xl font-medium text-stone-700">Volunteers Involved</p>
+</div>
+<div class="flex flex-col items-center text-center p-8 bg-stone-50 rounded-2xl shadow-sm hover:shadow-xl transition-shadow duration-300 transform hover:-translate-y-1">
+<p class="text-6xl font-bold text-[var(--primary-color)] mb-2">$500K+</p>
+<p class="text-xl font-medium text-stone-700">Funds Raised</p>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-50">
+<div class="container mx-auto px-6">
+<div class="grid lg:grid-cols-2 gap-16 items-center">
+<div class="rounded-2xl overflow-hidden shadow-2xl">
+<img alt="Our Mission" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBclDINIYRIlvIYBB5sT_6fibBiDrBHKYhh5pBugV9fMmlpq9v-6NZicQS3c5jt2O9bpy6Qc5cMctwmAPXVvCBqs8VtP9t2YY9wBl5pB9axozhMEE4Zk7mG-baEsmV-9iBjD85uXOAWB2C9499QjZfhEn20bxY-gBbul8AVkyHR8iTO9vZoU1F7RXKmZB88kXOcNyfmOjpOjH2nuRxsRo1LyNmGqGXMGavKGnQBjDQOiSwF2TLhXBpWgXBb7t01WympUDRTR6VCyQ"/>
+</div>
+<div>
+<h2 class="text-5xl font-bold tracking-tight mb-6 text-stone-800">Our Mission</h2>
+<p class="text-lg text-stone-600 mb-8 leading-relaxed">At Kindness Connect, our mission is to empower communities through sustainable development projects, focusing on education, health, and economic empowerment. We believe in creating lasting change by working hand-in-hand with local communities.</p>
+<a class="inline-flex items-center font-semibold text-lg text-[var(--primary-color)] hover:text-amber-600 transition-all duration-200 group" href="/about">
+                  Read our story
+                  <svg class="w-6 h-6 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white">
+<div class="container mx-auto px-6">
+<h2 class="text-5xl font-bold tracking-tight text-center mb-16 text-stone-800">Featured Programs</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-2">
+<div class="relative">
+<img alt="Education for All" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBPtfgDxBwhMS6dRSM4yeSuKfAEST9u81676dMa7J45skIZbpO3R8x1hXXrvMdVcDOxl9-ZGUa5vidigFHh2BB7wFUQwUZfuU2mjSeVoPNEXu2XJiry5qjeTmNKUqjjvHycfcL_AuT8ycJmgvUYVCqw1PJnkf0ICPurbyTZklv83dZaTQpBFWMHh12iu8IqWpxNHOnqL46TJY7cYOWvdNAWnnZcq9NuFYRofF7ekWRmfVxZAqtfp_87wecce4CVQ3RtdJNvhIRnjg"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+<span class="absolute top-4 left-4 bg-[var(--primary-color)] text-white text-sm font-semibold uppercase px-4 py-1.5 rounded-full tracking-wider">Education</span>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-bold mb-3">Education for All</h3>
+<p class="text-stone-600 mb-6 leading-relaxed">Providing quality education to children in underserved communities.</p>
+<a class="font-semibold text-lg text-[var(--primary-color)] hover:text-amber-600 transition-colors duration-200 inline-flex items-center group" href="/programs/education">Explore Program <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 7l5 5-5 5M6 12h12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-2">
+<div class="relative">
+<img alt="Environmental Sustainability" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMrHJtCKOcEJUWzjhF7IEC6WCJO7iWhlh_YIgpBnw8C4GMEoQqykM9RyfrK6lmDMergh-c0RbDqOYuXDW2LMAOF0lauCHRnsdD44WHPfMIIV5Ka5cv1B4ixoRMMG-pX8jF1vDFA2HmQI1fatKzmPpu1TvWaek1cqNszFr5vxLeu-mbV60ULkPtc-E3P_AiU-H5qPRE1qDtsGVziC-GE-wKQ9QeGyMkxE4kmmqXJruxBCdi3Fnzg6qGjF6Jj_QFl_OHxj-3rbcymA"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+<span class="absolute top-4 left-4 bg-emerald-500 text-white text-sm font-semibold uppercase px-4 py-1.5 rounded-full tracking-wider">Environment</span>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-bold mb-3">Environmental Sustainability</h3>
+<p class="text-stone-600 mb-6 leading-relaxed">Promoting sustainable practices and environmental conservation.</p>
+<a class="font-semibold text-lg text-[var(--primary-color)] hover:text-amber-600 transition-colors duration-200 inline-flex items-center group" href="/programs/environment">Explore Program <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 7l5 5-5 5M6 12h12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
+</div>
+</div>
+<div class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 group transform hover:-translate-y-2">
+<div class="relative">
+<img alt="Healthcare Access" class="w-full h-64 object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb92XmFkntDYBmUw_KqSsv1Z0wcqoaoaPTGBp8PG5ckmLDfqXt12Ic6ntsF0eR978UY4MD37GxQqyIqtrC4W8lAQLeAT3MlA4d5EKQXse74r5USQAJpR5KjQPfnBMXjyEN9oRy9G53PvkltWCuWqUkodCQAYOUfyt-3TgcvXqa6M-bAZoHUbWjqXbBuKt2wipVOzLo92NhlF-yCyZb1XHcV5-itBLxOGgCoJfhkLdQ421z-EqSQwwMoII4P6FBWDXJrb0wumTsbQ"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300"></div>
+<span class="absolute top-4 left-4 bg-sky-500 text-white text-sm font-semibold uppercase px-4 py-1.5 rounded-full tracking-wider">Health</span>
+</div>
+<div class="p-8">
+<h3 class="text-2xl font-bold mb-3">Healthcare Access</h3>
+<p class="text-stone-600 mb-6 leading-relaxed">Improving access to healthcare services for vulnerable populations.</p>
+<a class="font-semibold text-lg text-[var(--primary-color)] hover:text-amber-600 transition-colors duration-200 inline-flex items-center group" href="/programs/health">Explore Program <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 7l5 5-5 5M6 12h12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-24 bg-stone-50">
+<div class="container mx-auto px-6">
+<h2 class="text-5xl font-bold tracking-tight text-center mb-16 text-stone-800">Success Stories</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+<a class="relative rounded-2xl overflow-hidden shadow-lg group block" href="/stories/sarah">
+<img alt="Story 1" class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwP7_svjQfCYxjY0oQMP-TB4eVwUapY0Tdp2SIL2ThlpGWXR3KjoR-Q7F7oKO675k5gAhZkPdqoFMUPZzx_UYpUPNUfblHwGONEPW_cg26-T3RTJn8jArQw12Zd6ElET-fxHXn2K7g8yshFXLuKLL-qlmaoxZKOOXcXKyZzPZhIitseaCoinKqMT7skjo_POf5NT_0d1hBJJfjJfTMCTf5NDK5y8qKSBNWHaQzSpV130Mkj9m84Sz3uMb3Ht4FPi9klHDeF1TJLA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+<blockquote class="text-white">
+<p class="text-xl font-semibold mb-3 leading-snug">"This program changed my life. I can now support my family."</p>
+<footer class="text-base text-stone-300 font-medium">- Sarah, Microfinance Beneficiary</footer>
+</blockquote>
+</div>
+</a>
+<a class="relative rounded-2xl overflow-hidden shadow-lg group block" href="/stories/john">
+<img alt="Story 2" class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD00UxCdRfKjq2_E9h30DvymuJ8XFOzSCg99lj0CJgUsTz9xR9BcA9cf-Ot0AN13vOd3FIU8zZT3P4YGXynxGnptq76tGV3LUIER_y0Nwt7OD0pcC_M05fJoE335lzdcoqTuno7Gh7U8WNQCvxYyfJUXEVgjsVQSpVrWylZGgNUayLk--L7Zdz55M5b7scig1FZmtYMv2Rxao3FnyUQq0q-jE5Dqhu9m0mkrWDCOC4RuA94hKLvgQTbe_td-CQh6x-l5yIYp53qAQ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+<blockquote class="text-white">
+<p class="text-xl font-semibold mb-3 leading-snug">"I've gained confidence and skills to lead my community."</p>
+<footer class="text-base text-stone-300 font-medium">- John, Youth Leadership Participant</footer>
+</blockquote>
+</div>
+</a>
+<a class="relative rounded-2xl overflow-hidden shadow-lg group block" href="/stories/maria">
+<img alt="Story 3" class="w-full h-96 object-cover transform group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBArBrAw1yKmGkvMfoijxdA2Hm6iJOu5etMZg10RjAqaoLE0b3GBFPGI3ivf3OHsF52_fXA0eUK3Wntuo6WjpArCsXRONN9_QafSmXBB89khQnNF1H0q7gIjHL5frqtwItZhqqr8vYMqez1BT46HmseSeak3e_k9k-dBjD6KTjFQUEf1vBi_JKggkAnCvdtlI6I1z6HSymAVkKBJE6Lgu2Z8ck9HiJsLFfY9cmVr4ssIcGvOZvQcUiR7vz1D4SCyzUY7kdM90I5Fw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+<blockquote class="text-white">
+<p class="text-xl font-semibold mb-3 leading-snug">"Our village now has clean water, thanks to Kindness Connect."</p>
+<footer class="text-base text-stone-300 font-medium">- Maria, Community Elder</footer>
+</blockquote>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="py-24 bg-white">
+<div class="container mx-auto px-6">
+<h2 class="text-5xl font-bold tracking-tight text-center mb-16 text-stone-800">Gallery</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-4">
+<div class="group relative overflow-hidden rounded-2xl col-span-2 row-span-2 shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACMPkNJ5PyG9m6oyco5e6uvuGKPsbERI9rvraoJZysRS8yg5dEnxulkY7rQpDdyEDClUFsJSq2EbSnhlBmERPV_GPjCalNKlNVqa687zYD_i5zkt2rlcZ2qpFgdwF8zR32ohcJ5Rr2WUC_R-nSF4QnINe_N0aDucDqevB4gTRMr8Ej98SymD7miIGWt2MkGRz6xJsrFuwKgPVkWb31_YExSRMNHU9unnL4dOx4l04m3LzWE6sq5kGzOzAoXK8q7PMFlwupErlfZg"/>
+</div>
+<div class="group relative overflow-hidden rounded-2xl aspect-w-1 aspect-h-1 shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAbJGlJE2auH8SPByk-dwB50m-49ZkPoogHqKPkunnsZ1KzBMuExUE04LxKs0Mcj97hA2deKJWf2WVhSJUPnjXoKMu6a1gEp3Nz3J-8lKEv6bgO1rLvIA0NL2pzrmMkWAzMq-oNgCDUWMswXmqePso6fqbRg2TUYRWPFrIHFEAluXVcO3MgAgPNhNkWWNXXXcjoyFwV6BWuAjcFXvTRJkfwXL4G80KJ9AbIjvnoN1aa2uFPw5pIYOkrkKkfAKYY_yV3SbqYxAiw_A"/>
+</div>
+<div class="group relative overflow-hidden rounded-2xl aspect-w-1 aspect-h-1 shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKftbIMWZr5BTXQiQEqpAEsRPfKMCpgsKEkOUDR-2AFr4qOcDtpunwhIbUwZZxsCdAx_IRmC1-UvI51R3OWgQqQpmks8y1iYJrtUZxo4E4h-mICiN0rHLRbSrni3bDQwqA3TUTgqQDjv-vlVFeeiqEVSb3jCb9PaBGM7m-3hH3lHP5_hI-fDxIWqd1STOVc8SE5OMnpzjrCaJqH3iy6MLedmu8bKLUPhQBEQQzxeofdcbm9Y-Yg98gAwxI4HAgQmgsMQDo8ROkMQ"/>
+</div>
+<div class="group relative overflow-hidden rounded-2xl aspect-w-1 aspect-h-1 shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdJ_cx7jGwXYHFrLD7Y6cL8D30OmZC7wjMzgMbxfXOCqsdHIDyw5eJ2EHnDVWxtv8CPkH32IAax9gADYQJ1_Yo3P2lJ3vEUv-25X_YNnNVh90MrjWs0oYMxW_nIRDxhrem7JbpscLnr1vMqyWEdH_HtS8h0zqmFEsvAnQAbzrMLCeuH1zMSd6jgV4IySjtnM4EBjqiRyKpKqW_EmlbbJRTXR6p3WSTHQ09PHSMJ_VhS2YR7L-HBerBiMCahm11tWDGA7TM9OOLvw"/>
+</div>
+<div class="group relative overflow-hidden rounded-2xl aspect-w-1 aspect-h-1 shadow-lg">
+<img class="w-full h-full object-cover transition-transform duration-300 transform group-hover:scale-110" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBUdTpaY1WHcf1t9H2xiFNY9GrPYwXojg6o4sZKmXochEe8o4TG3z4sknRLiZ5cchznWVh9EXKYVcwPVEXKW8YjQJchk1OYn2xeOtOkaz_Lh1W0KP649S7febsUUcwLlaqezVsp8Aj24PJkiPkYMMxzBCef_IeIQDLLLAymO-ZhbKbfnIeEjsfPGb962m7LLYEe8jvuVn3BpE8Mw2MHwCrZlbTyIrQtPuoUVDiwHjARj31wzqkbqCPBII2z2t9G1ifqUfDZ4YcGmw"/>
+</div>
+</div>
+<div class="text-center mt-16">
+<a class="inline-flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-[var(--primary-color)] text-white text-lg font-semibold shadow-lg hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[var(--primary-color)] transition-all duration-300 transform hover:scale-105 hover:-translate-y-px" href="/gallery">
+                View Full Gallery
+              </a>
+</div>
+</div>
+</section>
+<section class="py-24 bg-[var(--primary-color)] text-white">
+<div class="container mx-auto px-6 text-center">
+<h2 class="text-5xl font-bold tracking-tight mb-6">Make a Difference Today</h2>
+<p class="max-w-3xl mx-auto text-xl mb-10 leading-relaxed">Your contribution can change a life. Join us in building a better future.</p>
+<button class="flex-inline min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-8 bg-white text-[var(--primary-color)] text-lg font-bold shadow-lg hover:bg-stone-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[var(--primary-color)] focus:ring-white transition-all duration-300 transform hover:scale-105 hover:-translate-y-px">
+              Donate Now
+            </button>
+</div>
+</section>
+</main>
+<footer class="bg-stone-900 text-stone-300">
+<div class="container mx-auto px-6 py-20">
+<div class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-5 gap-12">
+<div class="lg:col-span-2">
+<a class="flex items-center gap-3 text-white mb-6" href="#">
+<svg class="h-10 w-10 text-[var(--primary-color)]" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_6_543_footer)"><path d="M42.1739 20.1739L27.8261 5.82609C29.1366 7.13663 28.3989 10.1876 26.2002 13.7654C24.8538 15.9564 22.9595 18.3449 20.6522 20.6522C18.3449 22.9595 15.9564 24.8538 13.7654 26.2002C10.1876 28.3989 7.13663 29.1366 5.82609 27.8261L20.1739 42.1739C21.4845 43.4845 24.5355 42.7467 28.1133 40.548C30.3042 39.2016 32.6927 37.3073 35 35C37.3073 32.6927 39.2016 30.3042 40.548 28.1133C42.7467 24.5355 43.4845 21.4845 42.1739 20.1739Z" fill="currentColor"></path><path clip-rule="evenodd" d="M7.24189 26.4066C7.31369 26.4411 7.64204 26.5637 8.52504 26.3738C9.59462 26.1438 11.0343 25.5311 12.7183 24.4963C14.7583 23.2426 17.0256 21.4503 19.238 19.238C21.4503 17.0256 23.2426 14.7583 24.4963 12.7183C25.5311 11.0343 26.1438 9.59463 26.3738 8.52504C26.5637 7.64204 26.4411 7.31369 26.4066 7.24189C26.345 7.21246 26.143 7.14535 25.6664 7.1918C24.9745 7.25925 23.9954 7.5498 22.7699 8.14278C20.3369 9.32007 17.3369 11.4915 14.4142 14.4142C11.4915 17.3369 9.32007 20.3369 8.14278 22.7699C7.5498 23.9954 7.25925 24.9745 7.1918 25.6664C7.14534 26.143 7.21246 26.345 7.24189 26.4066ZM29.9001 10.7285C29.4519 12.0322 28.7617 13.4172 27.9042 14.8126C26.465 17.1544 24.4686 19.6641 22.0664 22.0664C19.6641 24.4686 17.1544 26.465 14.8126 27.9042C13.4172 28.7617 12.0322 29.4519 10.7285 29.9001L21.5754 40.747C21.6001 40.7606 21.8995 40.931 22.8729 40.7217C23.9424 40.4916 25.3821 39.879 27.0661 38.8441C29.1062 37.5904 31.3734 35.7982 33.5858 33.5858C35.7982 31.3734 37.5904 29.1062 38.8441 27.0661C39.879 25.3821 40.4916 23.9425 40.7216 22.8729C40.931 21.8995 40.7606 21.6001 40.747 21.5754L29.9001 10.7285ZM29.2403 4.41187L43.5881 18.7597C44.9757 20.1473 44.9743 22.1235 44.6322 23.7139C44.2714 25.3919 43.4158 27.2666 42.252 29.1604C40.8128 31.5022 38.8165 34.012 36.4142 36.4142C34.012 38.8165 31.5022 40.8128 29.1604 42.252C27.2666 43.4158 25.3919 44.2714 23.7139 44.6322C22.1235 44.9743 20.1473 44.9757 18.7597 43.5881L4.41187 29.2403C3.29027 28.1187 3.08209 26.5973 3.21067 25.2783C3.34099 23.9415 3.8369 22.4852 4.54214 21.0277C5.96129 18.0948 8.43335 14.7382 11.5858 11.5858C14.7382 8.43335 18.0948 5.9613 21.0277 4.54214C22.4852 3.8369 23.9415 3.34099 25.2783 3.21067C26.5973 3.08209 28.1187 3.29028 29.2403 4.41187Z" fill="currentColor" fill-rule="evenodd"></path></g><defs><clipPath id="clip0_6_543_footer"><rect fill="white" height="48" width="48"></rect></clipPath></defs></svg>
+<h2 class="text-2xl font-bold tracking-tight">Kindness Connect</h2>
+</a>
+<p class="text-stone-400 max-w-sm leading-relaxed">Empowering communities through sustainable development projects, focusing on education, health, and economic empowerment.</p>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
+<ul class="space-y-3">
+<li><a class="hover:text-[var(--primary-color)] transition-colors duration-200" href="#">About Us</a></li>
+<li><a class="hover:text-[var(--primary-color)] transition-colors duration-200" href="#">Programs</a></li>
+<li><a class="hover:text-[var(--primary-color)] transition-colors duration-200" href="#">Stories</a></li>
+<li><a class="hover:text-[var(--primary-color)] transition-colors duration-200" href="#">Contact</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-white mb-6">Contact</h3>
+<ul class="space-y-3 text-stone-400">
+<li>123 Charity St.</li>
+<li>Kindnessville, KV 12345</li>
+<li>Email: info@kindness.org</li>
+<li>Phone: (123) 456-7890</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold text-white mb-6">Newsletter</h3>
+<p class="text-stone-400 mb-4 leading-relaxed">Stay updated with our latest news and projects.</p>
+<form class="flex">
+<input class="w-full rounded-l-md px-4 py-2.5 bg-stone-800 text-white border-stone-700 focus:ring-2 focus:ring-[var(--primary-color)] focus:border-[var(--primary-color)]" placeholder="Your email" type="email"/>
+<button class="bg-[var(--primary-color)] text-white px-4 rounded-r-md hover:bg-amber-600 transition-colors duration-200" type="submit">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path></svg>
+</button>
+</form>
+</div>
+</div>
+<div class="mt-16 pt-10 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center text-center md:text-left">
+<p class="text-sm text-stone-500 mb-4 md:mb-0">© 2025 Active Motion Kenya. All rights reserved.</p>
+<div class="flex space-x-6">
+<a class="text-stone-400 hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M22.46,6.54a.5.5,0,0,0-.38-.22h-2.1a4.33,4.33,0,0,0-3.88-2.67A4.2,4.2,0,0,0,13.1,5.3,4.28,4.28,0,0,0,10.8,8v.54C7.1,7.84,4.2,4.92,4.16,4.88a.5.5,0,0,0-.85.31c-.38,4.24.85,7.07,1.94,8.7a9.83,9.83,0,0,0,1.93,2.15c-1.35,1.55-3.48,2.37-3.5,2.38a.5.5,0,0,0-.24.75c.07.1.33.45.98.77,1.05.51,2.2.73,3.56.73,6.26,0,11.5-4.83,12.09-11.05l2.65-2.65A.5.5,0,0,0,22.46,6.54ZM8.83,18.84c.8-.44,2.29-1.34,3.33-2.73a.5.5,0,0,0-.16-.68c-.04-.02-3.89-2.34-3.9-8.52,1.42,1.15,4,2.94,7,.34A.5.5,0,0,0,16,6.72V8a3.29,3.29,0,0,1-1,2.44,3.17,3.17,0,0,1-4.28.32,3.19,3.19,0,0,1-1.3-3.69,3.21,3.21,0,0,1,2.8-2.2,2.83,2.83,0,0,1,2.6,1.7a.5.5,0,0,0,.6.26H18.5a1.5,1.5,0,0,1,1,2.6,1.52,1.52,0,0,1-2.14,0,.5.5,0,0,0-.71.05,4.35,4.35,0,0,0,.1,6.13,4.42,4.42,0,0,0,6-.16.5.5,0,0,0,.08-.7,1.52,1.52,0,0,1,0-2.14,1.5,1.5,0,0,1,2.6,1c-.3,1-1.12,1.83-2,2.35a.5.5,0,0,0-.24.43c.07,1.3.1,2.68-.08,4a4.11,4.11,0,0,1-8.12,1c-1.89-1.29-3.45-3-4.63-4.92C7,14,5.88,11.53,5.65,8.13,8.34,10.61,12.3,12,12.43,12a.5.5,0,0,0,.45-.34,3.3,3.3,0,0,1,6.48-1.42.5.5,0,0,0,.9.25,4.12,4.12,0,0,0-2.28-10C12.3,3.61,15.1,1.75,17,1.06,14.28,3.24,12.2,6.3,12.08,6.48a.5.5,0,0,0-.11.39V8a.5.5,0,0,0,.5.5h.06a.5.5,0,0,0,.44-.32,4.28,4.28,0,0,1,8.12-1.44c-5.74,1.3-9.52,5.23-11.41,7.57C8.42,16.22,7.39,17.41,6.31,18.42Z"></path></svg>
+</a>
+<a class="text-stone-400 hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm3.5,8.5h-2a.5.5,0,0,0-.5.5v1.5H15a.5.5,0,0,1,0,1H13v4a.5.5,0,0,1-.5.5H11a.5.5,0,0,1-.5-.5V14H9a.5.5,0,0,1,0-1h1.5V11A2.5,2.5,0,0,1,13,8.5h2a.5.5,0,0,1,0,1Z"></path></svg>
+</a>
+<a class="text-stone-400 hover:text-white transition-colors" href="#">
+<svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12,6.86c-1.68,0-1.89.01-2.56.04-.67.03-1.12.12-1.52.27a2.86,2.86,0,0,0-1,.58,2.8,2.8,0,0,0-.58,1c-.15.4-.24.85-.27,1.52-.03.67-.04.88-.04,2.56s.01,1.89.04,2.56c.03.67.12,1.12.27,1.52a2.86,2.86,0,0,0,.58,1,2.8,2.8,0,0,0,1,.58c.4.15.85.24,1.52.27.67.03.88.04,2.56.04s1.89-.01,2.56-.04c.67-.03,1.12-.12,1.52-.27a2.86,2.86,0,0,0,1-.58,2.8,2.8,0,0,0,.58-1c.15-.4.24-.85-.27-1.52.03-.67.04-.88-.04-2.56s-.01-1.89-.04-2.56c-.03-.67-.12-1.12-.27-1.52a2.86,2.86,0,0,0-.58-1,2.8,2.8,0,0,0-1-.58c-.4-.15-.85-.24-1.52-.27C13.89,6.87,13.68,6.86,12,6.86ZM12,5.36c1.7,0,1.91.01,2.59.04.7.03,1.3.15,1.8.35a4.3,4.3,0,0,1,1.58,1,4.3,4.3,0,0,1,1,1.58c.2.5.32,1.1.35,1.8.03.68.04,1.89.04,2.59s-.01,1.91-.04,2.59c-.03.7-.15,1.3-.35,1.8a4.3,4.3,0,0,1-1,1.58,4.3,4.3,0,0,1-1.58,1c-.5.2-1.1.32-1.8.35-.68.03-1.89.04-2.59.04s-1.91-.01-2.59-.04c-.7-.03-1.3-.15-1.8-.35a4.3,4.3,0,0,1-1.58-1,4.3,4.3,0,0,1-1-1.58c-.2-.5-.32-1.1-.35-1.8-.03-.68-.04-1.89-.04-2.59s.01-1.91.04-2.59c.03-.7.15-1.3.35-1.8a4.3,4.3,0,0,1,1-1.58,4.3,4.3,0,0,1,1.58-1c.5-.2,1.1-.32,1.8-.35C10.09,5.37,10.3,5.36,12,5.36Zm0,3.15A3.5,3.5,0,1,0,15.5,12,3.5,3.5,0,0,0,12,8.51Zm0,5.5A2,2,0,1,1,14,12,2,2,0,0,1,12,14.01Zm3.35-6.16a.8.8,0,1,0,.8.8A.8.8,0,0,0,15.35,7.85Z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>

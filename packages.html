@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Plus+Jakarta+Sans%3Awght%40400%3B500%3B700%3B800" onload="this.rel='stylesheet'" rel="stylesheet"/>
+<title>Wanderlust Travel</title>
+<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style type="text/tailwindcss">
+      :root {
+        --primary-color: #0d7ff2;
+        --secondary-color: #f0f2f5;
+        --text-primary: #111418;
+        --text-secondary: #60758a;
+        --white: #ffffff;
+      }
+      @keyframes float {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+      .floating-element {
+        animation: float 6s ease-in-out infinite;
+      }
+    </style>
+</head>
+<body class="bg-[var(--white)]" style='font-family: "Plus Jakarta Sans", "Noto Sans", sans-serif;'>
+<div class="relative flex size-full min-h-screen flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-lg">
+<nav class="container mx-auto flex items-center justify-between whitespace-nowrap px-4 py-4 lg:px-10">
+<div class="flex items-center gap-3 text-[var(--text-primary)]">
+<div class="size-8 text-[var(--primary-color)]">
+<svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M44 11.2727C44 14.0109 39.8386 16.3957 33.69 17.6364C39.8386 18.877 44 21.2618 44 24C44 26.7382 39.8386 29.123 33.69 30.3636C39.8386 31.6043 44 33.9891 44 36.7273C44 40.7439 35.0457 44 24 44C12.9543 44 4 40.7439 4 36.7273C4 33.9891 8.16144 31.6043 14.31 30.3636C8.16144 29.123 4 26.7382 4 24C4 21.2618 8.16144 18.877 14.31 17.6364C8.16144 16.3957 4 14.0109 4 11.2727C4 7.25611 12.9543 4 24 4C35.0457 4 44 7.25611 44 11.2727Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tighter">Active Motion Kenya</h2>
+</div>
+<div class="hidden items-center gap-8 lg:flex">
+<a class="text-sm font-medium text-[var(--text-primary)] transition-colors hover:text-[var(--primary-color)]" href="#">Home</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]" href="#">Destinations</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]" href="#">Packages</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]" href="#">Special Offers</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]" href="#">About Us</a>
+<a class="text-sm font-medium text-[var(--text-secondary)] transition-colors hover:text-[var(--primary-color)]" href="#">Contact Us</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden h-10 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md border border-gray-300 bg-transparent px-4 text-sm font-bold text-[var(--text-primary)] transition-colors hover:bg-[var(--secondary-color)] md:flex">
+<span class="truncate">Login</span>
+</button>
+<button class="flex h-10 cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[var(--primary-color)] px-2.5 text-[var(--white)] transition-colors hover:bg-blue-600">
+<div data-icon="ShoppingCart" data-size="20px" data-weight="regular">
+<svg fill="currentColor" height="20px" viewBox="0 0 256 256" width="20px" xmlns="http://www.w3.org/2000/svg">
+<path d="M222.14,58.87A8,8,0,0,0,216,56H54.68L49.79,29.14A16,16,0,0,0,34.05,16H16a8,8,0,0,0,0,16h18L59.56,172.29a24,24,0,0,0,5.33,11.27,28,28,0,1,0,44.4,8.44h45.42A27.75,27.75,0,0,0,152,204a28,28,0,1,0,28-28H83.17a8,8,0,0,1-7.87-6.57L72.13,152h116a24,24,0,0,0,23.61-19.71l12.16-66.86A8,8,0,0,0,222.14,58.87ZM96,204a12,12,0,1,1-12-12A12,12,0,0,1,96,204Zm96,0a12,12,0,1,1-12-12A12,12,0,0,1,192,204Zm4-74.57A8,8,0,0,1,188.1,136H69.22L57.59,72H206.41Z"></path>
+</svg>
+</div>
+</button>
+</div>
+</nav>
+</header>
+<main class="flex-1">
+<section class="relative min-h-[50vh] overflow-hidden bg-gradient-to-br from-blue-100 to-indigo-200 md:min-h-[70vh]">
+<div class="absolute -bottom-20 -left-20 h-64 w-64 rounded-full bg-blue-300/50 floating-element" style="animation-delay: -2s"></div>
+<div class="absolute -top-20 -right-20 h-64 w-64 rounded-full bg-indigo-300/50 floating-element"></div>
+<div class="relative z-10 flex h-full min-h-[50vh] flex-col items-center justify-center gap-6 p-4 text-center text-gray-800 md:min-h-[70vh]">
+<h1 class="text-4xl font-extrabold leading-tight tracking-tighter text-gray-900 md:text-6xl">Find Your Next Adventure</h1>
+<p class="max-w-2xl text-lg font-light text-gray-700 md:text-xl">Curated travel experiences for every type of traveler</p>
+<div class="mt-4 flex flex-wrap justify-center gap-4">
+<button class="floating-element flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-[var(--primary-color)] px-6 text-base font-bold text-white shadow-lg transition-transform hover:scale-105" style="animation-delay: -4s">
+<span class="truncate">Browse Packages</span>
+</button>
+<button class="floating-element flex h-12 min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-md bg-white/90 px-6 text-base font-bold text-[var(--text-primary)] shadow-lg transition-transform hover:scale-105" style="animation-delay: -6s">
+<span class="truncate">Customize Your Trip</span>
+</button>
+</div>
+</div>
+</section>
+<section class="relative z-10 -mt-16 w-full px-4 md:px-10">
+<div class="container mx-auto rounded-2xl bg-white p-6 shadow-2xl backdrop-blur-lg md:p-8">
+<div class="grid grid-cols-1 items-end gap-6 lg:grid-cols-12">
+<div class="col-span-1 lg:col-span-4">
+<label class="mb-2 block text-sm font-medium text-gray-600" for="destination">Where to?</label>
+<div class="relative">
+<div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+<svg class="h-5 w-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L10 4.414l6.293 6.293a1 1 0 001.414-1.414l-7-7z" fill-rule="evenodd"></path>
+</svg>
+</div>
+<input class="w-full rounded-lg border-gray-300 py-3 pl-10 pr-4 text-sm focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]" id="destination" placeholder="e.g., Paris, France" type="text"/>
+</div>
+</div>
+<div class="col-span-1 lg:col-span-2">
+<label class="mb-2 block text-sm font-medium text-gray-600" for="checkin">Check-in</label>
+<input class="w-full cursor-pointer rounded-lg border-gray-300 py-3 px-4 text-sm focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]" id="checkin" type="date" value="2024-08-15"/>
+</div>
+<div class="col-span-1 lg:col-span-2">
+<label class="mb-2 block text-sm font-medium text-gray-600" for="checkout">Check-out</label>
+<input class="w-full cursor-pointer rounded-lg border-gray-300 py-3 px-4 text-sm focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]" id="checkout" type="date" value="2024-08-22"/>
+</div>
+<div class="col-span-1 lg:col-span-2">
+<label class="mb-2 block text-sm font-medium text-gray-600" for="guests">Travelers</label>
+<select class="w-full rounded-lg border-gray-300 py-3 px-4 text-sm focus:border-[var(--primary-color)] focus:ring-1 focus:ring-[var(--primary-color)]" id="guests">
+<option>2 Adults, 1 Room</option>
+<option>1 Adult, 1 Room</option>
+<option>2 Adults, 2 Rooms</option>
+<option>3 Adults, 1 Room</option>
+</select>
+</div>
+<div class="col-span-1 flex items-center justify-center lg:col-span-2">
+<button class="h-full w-full transform rounded-lg bg-[var(--primary-color)] px-6 py-3 text-sm font-bold text-white shadow-lg transition-transform duration-300 hover:-translate-y-1 hover:bg-blue-600">
+Search
+</button>
+</div>
+</div>
+</div>
+</section>
+<section class="w-full bg-white py-10 px-5 md:px-5 pt-20">
+<div class="container mx-auto max-w-7xl">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+<a class="group relative block w-full overflow-hidden rounded-xl bg-white shadow-md" href="#">
+<div class="h-64 w-full">
+<img alt="Early Bird Discount" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="Assets/Photos/mtk3-7.jpg"/>
+</div>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+<h3 class="text-2xl font-bold text-white">Early Bird Discount</h3>
+<p class="mt-2 text-white">Book your trip 3 months in advance and get 15% off.</p>
+<button class="mt-4 rounded-md bg-[var(--primary-color)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600">
+                                Book Now
+                            </button>
+</div>
+</a>
+<a class="group relative block w-full overflow-hidden rounded-xl bg-white shadow-md" href="#">
+<div class="h-64 w-full">
+<img alt="Last Minute Deals" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="Assets/Photos/mtk3-17.jpg"/>
+</div>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="absolute inset-0 flex flex-col items-start justify-end p-6">
+<h3 class="text-2xl font-bold text-white">Last Minute Deals</h3>
+<p class="mt-2 text-white">Spontaneous getaway? Get up to 25% off on select packages.</p>
+<button class="mt-4 rounded-md bg-[var(--primary-color)] px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600">
+                                Explore Deals
+                            </button>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 py-12 lg:px-10">
+<h2 class="mb-8 text-center text-3xl font-bold text-[var(--text-primary)]">Explore Our Packages</h2>
+<div class="flex flex-nowrap gap-8 overflow-x-auto pb-4">
+<div class="flex-shrink-0 space-y-8">
+<div class="flex gap-8">
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="kili.html">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/mtk3-26-1.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Kilimanjaro Summit</h3>
+<p class="text-sm text-[var(--text-secondary)]">6 Days | Marangu Route |
+                                    </p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">KES 220,000</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="backroads.html">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/gvb-25.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Back Roads Bike Ride</h3>
+<p class="text-sm text-[var(--text-secondary)]">1 Day | Kefri Route</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">KES 2,500</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="grasslands.html">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/sutirta-budiman-89IBtfoz3Vw-unsplash.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Grassland Getaway</h3>
+<p class="text-sm text-[var(--text-secondary)]">5 Days| Maasai Mara
+                                    </p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">KES 70,000</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+</div>
+<div class="flex gap-8">
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/mtk3-21-1.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Mount Kenya Summit Expedition</h3>
+<p class="text-sm text-[var(--text-secondary)]">4 Days |    Sirimon-Chogoria Route</p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">$2,299</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="dogs.html">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/DSC_0735.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Hike With Dogs
+                                </h3>
+<p class="text-sm text-[var(--text-secondary)]">1 Day | Nairobi
+                                    </p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">$KES 2,500</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+<a class="group block w-80 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-shadow hover:shadow-lg" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/gvb-14.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Green Valley Bike Trails</h3>
+<p class="text-sm text-[var(--text-secondary)]">1 Day | Green Valley|
+                                    </p>
+<div class="mt-4 flex items-center justify-between">
+<span class="text-lg font-bold text-[var(--primary-color)]">KES 3,500</span>
+<button class="rounded-md bg-[var(--secondary-color)] px-4 py-2 text-sm font-medium text-[var(--text-primary)] transition-colors hover:bg-gray-300">
+                                        View Details
+                                    </button>
+</div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</section>
+<section class="bg-[var(--secondary-color)] py-16">
+<div class="container mx-auto px-4 lg:px-10">
+<h2 class="mb-8 text-center text-3xl font-bold text-[var(--text-primary)]">Special Offers &amp; Top
+                    Packages</h2>
+<div class="flex flex-nowrap gap-8 overflow-x-auto pb-4">
+<a class="group block w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/gvb-17.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Muguga Trails Comunity Bike Ride</h3>
+<p class="text-sm text-[var(--text-secondary)]">1 Days |  Starting August 15 |
+                                Free</p>
+</div>
+</a>
+<a class="group block w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/rice-fields.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Mwea Rice Fields</h3>
+<p class="text-sm text-[var(--text-secondary)]">3 Days | Mwea |
+                                Starting Sep 28 | KES 25,000</p>
+</div>
+</a>
+<a class="group block w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/Hellsgate.jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Hell's Gate Bike Ride</h3>
+<p class="text-sm text-[var(--text-secondary)]">2 Days | Starting October 11 |
+                                KES 15,000</p>
+</div>
+</a>
+<a class="group block w-96 flex-shrink-0 cursor-pointer overflow-hidden rounded-lg bg-white shadow-md transition-shadow hover:shadow-xl" href="#">
+<div class="aspect-video w-full overflow-hidden">
+<div class="h-full w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("Assets/Photos/kli\ \(33\ of\ 36\).jpg");'></div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Kereita Forest Hike</h3>
+<p class="text-sm text-[var(--text-secondary)]">2 Days | Starting November 20 | KES 15,000</p>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="w-full bg-white py-12 px-6 mt-12 mb-16">
+<div class="container mx-auto max-w-[1200px]">
+<div class="mb-5">
+<h2 class="mb-5 text-left text-3xl font-bold leading-[34px] text-[var(--text-primary)]">Trending
+                        Destinations</h2>
+<p class="mb-3 max-w-[600px] text-base text-gray-500">Explore the places everyone's talking about.
+                        From vibrant cities to serene landscapes, find your next adventure here.</p>
+</div>
+<div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+<a class="group relative block h-80 w-full overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1" href="#">
+<img alt="Paris, France" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" src="Assets/Photos/kli (11 of 36).jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+<div class="absolute top-0 left-0 p-4">
+<h3 class="text-lg font-bold text-white">Hell's Gate, Kenya</h3>
+</div>
+</a>
+<a class="group relative block h-80 w-full overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1" href="#">
+<img alt="Kyoto, Japan" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" src="Assets/Photos/kli (32 of 36).jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+<div class="absolute top-0 left-0 p-4">
+<h3 class="text-lg font-bold text-white">Serengeti, Tanzania</h3>
+</div>
+</a>
+<a class="group relative block h-80 w-full overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1" href="#">
+<img alt="Dubai, UAE" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" src="Assets/Photos/mtk3-48.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+<div class="absolute top-0 left-0 p-4">
+<h3 class="text-lg font-bold text-white">Lake Ellis, Kenya</h3>
+</div>
+</a>
+<a class="group relative block h-80 w-full overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1" href="#">
+<img alt="Bora Bora, French Polynesia" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" src="Assets/Photos/gvb-73.jpg"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/10"></div>
+<div class="absolute top-0 left-0 p-4">
+<h3 class="text-lg font-bold text-white">Tigoni Tea, Kenya</h3>
+</div>
+</a>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 py-16 lg:px-10">
+<h2 class="mb-8 text-center text-3xl font-bold text-[var(--text-primary)]">Featured Travel Videos</h2>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<a class="group relative block cursor-pointer overflow-hidden rounded-lg shadow-lg" href="#">
+<div class="aspect-video w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBq8K7D1g7m_H-dY4q7-G210m4p5i7sJ_9D_yX9GzKjA-nB6XvXb-Y2Fw_d4fV1g-1gC_kY1hY4c_3c_rE9B_vV3u8X5G1Z_h_zI8B7A5X4B_p_k_b_m_w_c_v_s_k_d_a_f_i_j_l_k_m_p_r_u_w_x_y_z_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x_y_z_a_b_c_d_e_f_g_h_i_j_k_l_m_n_o_p_q_r_s_t_u_v_w_x_y_z");'></div>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-transform group-hover:scale-110">
+<svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M240,128a15.81,15.81,0,0,1-7.79,13.88l-128,72A16,16,0,0,1,80,200V56a16,16,0,0,1,24.21-13.88l128,72A15.81,15.81,0,0,1,240,128Z"></path>
+</svg>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+<h3 class="font-semibold text-white">A Week in Paradise: The Philippines</h3>
+</div>
+</a>
+<a class="group relative block cursor-pointer overflow-hidden rounded-lg shadow-lg" href="#">
+<div class="aspect-video w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-1b-e9k-d-c-b-a-9-8-7-6-5-4-3-2-1-0-z-y-x-w-v-u-t-s-r-q-p-o-n-m-l-k-j-i-h-g-f-e-d-c-b-a-z-y-x-w-v-u-t-s-r-q-p-o-n-m-l-k-j-i-h-g-f-e-d-c-b-a-z-y-x-w-v-u-t-s-r-q-p-o-n-m-l-k-j-i-h-g-f-e-d-c-b-a-z-y-x-w-v-u-t-s-r-q-p-o-n-m-l-k-j-i-h-g-f-e-d-c-b-a");'></div>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-transform group-hover:scale-110">
+<svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M240,128a15.81,15.81,0,0,1-7.79,13.88l-128,72A16,16,0,0,1,80,200V56a16,16,0,0,1,24.21-13.88l128,72A15.81,15.81,0,0,1,240,128Z"></path>
+</svg>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+<h3 class="font-semibold text-white">Cinematic Japan: Tokyo &amp; Kyoto</h3>
+</div>
+</a>
+<a class="group relative block cursor-pointer overflow-hidden rounded-lg shadow-lg" href="#">
+<div class="aspect-video w-full bg-cover bg-center transition-transform duration-300 group-hover:scale-110" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB_9_8_7_6_5_4_3_2_1_0_z_y_x_w_v_u_t_s_r_q_p_o_n_m_l_k_j_i_h_g_f_e_d_c_b_a_z_y_x_w_v_u_t_s_r_q_p_o_n_m_l_k_j_i_h_g_f_e_d_c_b_a_z_y_x_w_v_u_t_s_r_q_p_o_n_m_l_k_j_i_h_g_f_e_d_c_b_a_z_y_x_w_v_u_t_s_r_q_p_o_n_m_l_k_j_i_h_g_f_e_d_c_b_a");'></div>
+<div class="absolute inset-0 bg-black/30"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-white">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-white/30 backdrop-blur-sm transition-transform group-hover:scale-110">
+<svg class="h-8 w-8 text-white" fill="currentColor" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+<path d="M240,128a15.81,15.81,0,0,1-7.79,13.88l-128,72A16,16,0,0,1,80,200V56a16,16,0,0,1,24.21-13.88l128,72A15.81,15.81,0,0,1,240,128Z"></path>
+</svg>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black/70 to-transparent p-4">
+<h3 class="font-semibold text-white">Exploring the Scottish Highlands</h3>
+</div>
+</a>
+</div>
+</section>
+<section class="container mx-auto px-4 py-16 lg:px-10">
+<h2 class="mb-8 text-center text-3xl font-bold text-[var(--text-primary)]">Why Choose Us?</h2>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div class="text-center">
+<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary-color)] text-white">
+<svg fill="currentColor" height="32px" viewBox="0 0 256 256" width="32px" xmlns="http://www.w3.org/2000/svg">
+<path d="M208,40H48A16,16,0,0,0,32,56v58.78c0,89.61,75.82,119.34,91,124.39a15.53,15.53,0,0,0,10,0c15.2-5.05,91-34.78,91-124.39V56A16,16,0,0,0,208,40Zm0,74.79c0,78.42-66.35,104.62-80,109.18-13.53-4.51-80-30.69-80-109.18V56H208ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.68l50.34-50.34a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">24/7 Customer Support</h3>
+</div>
+<div class="text-center">
+<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary-color)] text-white">
+<svg fill="currentColor" height="32px" viewBox="0 0 256 256" width="32px" xmlns="http://www.w3.org/2000/svg">
+<path d="M208,32H184V24a8,8,0,0,0-16,0v8H88V24a8,8,0,0,0-16,0v8H48A16,16,0,0,0,32,48V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V48A16,16,0,0,0,208,32ZM72,48v8a8,8,0,0,0,16,0V48h80v8a8,8,0,0,0,16,0V48h24V80H48V48ZM208,208H48V96H208V208Zm-96-88v64a8,8,0,0,1-16,0V132.94l-4.42,2.22a8,8,0,0,1-7.16-14.32l16-8A8,8,0,0,1,112,120Zm59.16,30.45L152,176h16a8,8,0,0,1,0,16H136a8,8,0,0,1-6.4-12.8l28.78-38.37A8,8,0,1,0,145.07,132a8,8,0,1,1-13.85-8A24,24,0,0,1,176,136,23.76,23.76,0,0,1,171.16,150.45Z"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Flexible Cancellation</h3>
+</div>
+<div class="text-center">
+<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary-color)] text-white">
+<svg fill="currentColor" height="32px" viewBox="0 0 256 256" width="32px" xmlns="http://www.w3.org/2000/svg">
+<path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48Zm0,16V88H32V64Zm0,128H32V104H224v88Zm-16-24a8,8,0,0,1-8,8H168a8,8,0,0,1,0-16h32A8,8,0,0,1,208,168Zm-64,0a8,8,0,0,1-8,8H120a8,8,0,0,1,0-16h16A8,8,0,0,1,144,168Z"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Secure Payments</h3>
+</div>
+<div class="text-center">
+<div class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-[var(--primary-color)] text-white">
+<svg fill="currentColor" height="32px" viewBox="0 0 256 256" width="32px" xmlns="http://www.w3.org/2000/svg">
+<path d="M201.89,54.66A103.43,103.43,0,0,0,128.79,24H128A104,104,0,0,0,24,128v56a24,24,0,0,0,24,24H64a24,24,0,0,0,24-24V144a24,24,0,0,0-24-24H40.36A88.12,88.12,0,0,1,190.54,65.93,87.39,87.39,0,0,1,215.65,120H192a24,24,0,0,0-24,24v40a24,24,0,0,0,24,24h24a24,24,0,0,1-24,24H136a8,8,0,0,0,0,16h56a40,40,0,0,0,40-40V128A103.41,103.41,0,0,0,201.89,54.66ZM64,136a8,8,0,0,1,8,8v40a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V136Zm128,56a8,8,0,0,1-8-8V144a8,8,0,0,1,8-8h24v56Z"></path>
+</svg>
+</div>
+<h3 class="text-lg font-semibold text-[var(--text-primary)]">Expert Travel Planning</h3>
+</div>
+</div>
+</section>
+<section class="bg-[var(--secondary-color)] py-16">
+<div class="container mx-auto px-4 lg:px-10">
+<h2 class="mb-12 text-center text-3xl font-bold text-[var(--text-primary)]">What Our Travelers Say</h2>
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+<a class="block rounded-lg bg-white p-6 shadow-lg" href="#">
+<div class="mb-4 flex items-center gap-4">
+<div class="h-14 w-14 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAOWaytEOCOj8kcEI2LvL7jlD6qD0eIz7qx0G_TyfHrBlYlKCRaxQ5G8HL694blRl4C8fwodfPF4ylgNwBCkwucuPPoqN6Plore67IWIU1i5aIn8-8oUx_WDg3OHzqWJJeD1X07AM5dW-ND9ommZgRb6p3-AMdQGKdhO2v59fVwX0wrWGKWSk6OkPOt2GWj6NEBd1T5cXDya8VNIGOBTmNltwOvk7uH3zXcL6pSkcnYH9r1qPIEApEIi5lR6A4UYPFmZM347JPQZ7c");'></div>
+<div>
+<p class="font-semibold text-[var(--text-primary)]">Sophia Clark</p>
+<div class="flex text-yellow-400">
+<svg fill="currentColor" height="16px" viewBox="0 0 256 256" width="16px" xmlns="http://www.w3.org/2000/svg">
+<path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"></path>
+</svg>
+</div>
+</div>
+</div>
+<p class="italic text-[var(--text-secondary)]">"My trip to Italy was absolutely incredible! The
+                            itinerary was perfectly planned, and I saw so many amazing places."</p>
+</a>
+</div>
+</div>
+</section>
+<section class="container mx-auto px-4 py-16 lg:px-10">
+<div class="rounded-lg bg-cover bg-center p-12 text-center text-white" style="background-image: linear-gradient(rgba(13, 127, 242, 0.8), rgba(13, 127, 242, 0.8)), url('https://lh3.googleusercontent.com/aida-public/AB6AXuCH2H5MaWKQedKqAEwcmovqNYwxiH7j1Jw7GpBCw14AoGAPlG34hd7cGhGn7qmDOltfZEj3cn9-YK61bwGsGaqh-rINvL8R439UMocjjx6jmJ2UtxYEkzldJh0mZrL2AaTRlqTSrUcn4owWJMXTQkIjZUwFBI-DMTKI5p5uSGSbjqRUxvafgRYPofGvOho4YARjWu0YQIjTfHQnrsQC-4_97lvc9Xw9FoKtsQf-vQhe4nFnQTPViGKJYI7XtSfknmaT43FCI5FtCB4')">
+<h2 class="mb-4 text-3xl font-bold">Get Exclusive Travel Deals</h2>
+<p class="mb-6">Sign up for our newsletter and be the first to know about special offers and new
+                    destinations.</p>
+<form class="mx-auto max-w-md">
+<div class="flex items-center">
+<input class="w-full rounded-l-md border-gray-300 py-3 px-4 text-gray-800 focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)]" placeholder="Enter your email" type="email"/>
+<button class="rounded-r-md bg-blue-700 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-800" type="submit">Subscribe
+                        </button>
+</div>
+</form>
+</div>
+</section>
+<section class="w-full py-12 px-6">
+<div class="container mx-auto max-w-[1200px]">
+<h2 class="mb-6 text-xl font-bold text-[var(--text-primary)] md:text-2xl">Popular with Travelers</h2>
+<div class="grid grid-cols-1 gap-x-10 gap-y-4 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5">
+<div class="w-[180px] space-y-3">
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Hotels in New York</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Apartments in London</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Resorts in Bali</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Villas in Santorini</a>
+</div>
+<div class="w-[180px] space-y-3">
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Cabins in The Rockies</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Cottages in The Cotswolds</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Glamping in California</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Serviced apartments in Dubai</a>
+</div>
+<div class="w-[180px] space-y-3">
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Vacation rentals in Florida</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Holiday homes in Tuscany</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">B&amp;Bs in Scotland</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Guest houses in Cape Town</a>
+</div>
+<div class="w-[180px] space-y-3">
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Hostels in Berlin</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Motels in Las Vegas</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Ryokans in Kyoto</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Farm stays in New Zealand</a>
+</div>
+<div class="w-[180px] space-y-3">
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Luxury tents in The Sahara</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Unique places to stay in Iceland</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Family-friendly hotels in Orlando</a>
+<a class="block text-sm leading-tight text-[#0071c2] hover:underline hover:text-blue-800" href="#">Budget hotels in Bangkok</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-gray-800 text-gray-300">
+<div class="container mx-auto px-4 py-12 lg:px-10">
+<div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+<div>
+<h3 class="mb-4 text-lg font-semibold text-white">Wanderlust</h3>
+<p class="text-sm">Your adventure starts here. Discover and book amazing travel experiences.</p>
+</div>
+<div>
+<h3 class="mb-4 text-lg font-semibold text-white">Quick Links</h3>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-white" href="#">Home</a></li>
+<li><a class="hover:text-white" href="#">Destinations</a></li>
+<li><a class="hover:text-white" href="#">Packages</a></li>
+<li><a class="hover:text-white" href="#">About Us</a></li>
+</ul>
+</div>
+<div>
+<h3 class="mb-4 text-lg font-semibold text-white">Support</h3>
+<ul class="space-y-2 text-sm">
+<li><a class="hover:text-white" href="#">Contact Us</a></li>
+<li><a class="hover:text-white" href="#">FAQ</a></li>
+<li><a class="hover:text-white" href="#">Terms of Service</a></li>
+<li><a class="hover:text-white" href="#">Privacy Policy</a></li>
+</ul>
+</div>
+<div>
+<h3 class="mb-4 text-lg font-semibold text-white">Connect With Us</h3>
+<div class="flex space-x-4">
+<a class="text-gray-400 hover:text-white" href="#">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm8,191.63V152h24a8,8,0,0,0,0-16H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,0-16H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0,0,16h24v63.63a88,88,0,1,1,16,0Z"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-white" href="#">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M247.39,68.94A8,8,0,0,0,240,64H209.57A48.66,48.66,0,0,0,168.1,40a46.91,46.91,0,0,0-33.75,13.7A47.9,47.9,0,0,0,120,88v6.09C79.74,83.47,46.81,50.72,46.46,50.37a8,8,0,0,0-13.65,4.92c-4.31,47.79,9.57,79.77,22,98.18a110.93,110.93,0,0,0,21.88,24.2c-15.23,17.53-39.21,26.74-39.47,26.84a8,8,0,0,0-3.85,11.93c.75,1.12,3.75,5.05,11.08,8.72C53.51,229.7,65.48,232,80,232c70.67,0,129.72-54.42,135.75-124.44l29.91-29.9A8,8,0,0,0,247.39,68.94Zm-45,29.41a8,8,0,0,0-2.32,5.14C196,166.58,143.28,216,80,216c-10.56,0-18-1.4-23.22-3.08,11.51-6.25,27.56-17,37.88-32.48A8,8,0,0,0,92,169.08c-.47-.27-43.91-26.34-44-96,16,13,45.25,33.17,78.67,38.79A8,8,0,0,0,136,104V88a32,32,0,0,1,9.6-22.92A30.94,30.94,0,0,1,167.9,56c12.66.16,24.49,7.88,29.44,19.21A8,8,0,0,0,204.67,80h16Z"></path>
+</svg>
+</a>
+<a class="text-gray-400 hover:text-white" href="#">
+<svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
+<path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160ZM176,24H80A56.06,56.06,0,0,0,24,80v96a56.06,56.06,0,0,0,56,56h96a56.06,56.06,0,0,0,56-56V80A56.06,56.06,0,0,0,176,24Zm40,152a40,40,0,0,1-40,40H80a40,40,0,0,1-40-40V80A40,40,0,0,1,80,40h96a40,40,0,0,1,40,40ZM192,76a12,12,0,1,1-12-12A12,12,0,0,1,192,76Z"></path>
+</svg>
+</a>
+</div>
+</div>
+</div>
+<div class="mt-8 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+<p>© 2025 Active Motion Kenya. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
